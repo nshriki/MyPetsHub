@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimary">#CC355D64</color>
+    <color name="colorError">#FF0000</color> <!-- Error color -->
+    <color name="colorAccent">#03DAC5</color>
+    <color name="defaultColor">#355D64</color> <!-- Default outline color -->
+    <color name="checkbox_checked_color">#CC355D64</color> <!-- 80% opacity for checked state (checkBox) -->
 </resources>

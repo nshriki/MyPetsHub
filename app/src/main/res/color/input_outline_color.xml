@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<!--    &lt;!&ndash; Error state &ndash;&gt;-->
+<!--    <item android:color="@color/colorError" android:state_error="true" />-->
+    <!-- Focused state -->
+    <item android:color="#CC355D64" android:state_focused="true" />
+    <!-- Default/unfocused state -->
+    <item android:color="#355D64" />
+</selector>
