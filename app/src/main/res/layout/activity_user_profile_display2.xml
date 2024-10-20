@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserProfileDisplay2">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbarSize="0dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/MainBody"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Layout for the Header -->
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/Header"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <ImageButton
+                    android:id="@+id/Edit_btn"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="15dp"
+                    android:layout_weight="0"
+                    android:backgroundTint="#00FFFFFF"
+                    android:foregroundGravity="center_vertical"
+                    android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0"
+                    app:srcCompat="@drawable/edit_btn" />
+
+                <ImageButton
+                    android:id="@+id/Back_btn"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="271dp"
+                    android:layout_weight="0"
+                    android:backgroundTint="#00FFFFFF"
+                    android:foregroundGravity="center_vertical"
+                    android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/Edit_btn"
+                    app:layout_constraintHorizontal_bias="0.289"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0"
+                    app:srcCompat="@drawable/back_btn_v2" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="18dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="115sp"
+                    android:layout_height="115sp"
+                    android:layout_marginBottom="10dp"
+                    android:foregroundGravity="center"
+                    app:srcCompat="@drawable/pet_profile_storage" />
+
+                <TextView
+                    android:id="@+id/petName3_textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_extrabold"
+                    android:textAlignment="center"
+                    android:textColor="#49454F"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/petBirthday3_textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:textAlignment="center"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/useContact2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="47dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/userContact2_textView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:text="User Contact"
+                        android:textColor="#E6474C4C"
+                        android:textSize="13sp" />
+
+                    <View
+                        android:id="@+id/userContact2_divider"
+                        android:layout_width="match_parent"
+                        android:layout_height="1.3dp"
+                        android:layout_marginTop="6dp"
+                        android:background="?android:attr/listDivider" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/userEmail2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="30dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/userEmail2_textView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:text="Email"
+                        android:textColor="#D9474C4C"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/userEmail2_editText"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="6dp"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:cursorVisible="false"
+                        android:ems="10"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:inputType="text"
+                        android:textColor="#474C4C"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/userMNumber2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="30dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/userMNumber2_textView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:text="Mobile Number"
+                        android:textColor="#D9474C4C"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/userMNumber2_EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="6dp"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:cursorVisible="false"
+                        android:ems="10"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:inputType="text"
+                        android:textColor="#474C4C"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/userEmergencyCon2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="47dp"
+                android:layout_marginBottom="35dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/userEmergencyCon2_textView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:text="Emergency Contact"
+                        android:textColor="#E6474C4C"
+                        android:textSize="13sp" />
+
+                    <View
+                        android:id="@+id/userEmergencyCon2_divider"
+                        android:layout_width="match_parent"
+                        android:layout_height="1.3dp"
+                        android:layout_marginTop="6dp"
+                        android:background="?android:attr/listDivider" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/userECName2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="30dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/userECName2_textView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:text="Name"
+                        android:textColor="#D9474C4C"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/userECName2_editText"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="6dp"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:cursorVisible="false"
+                        android:ems="10"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:inputType="text"
+                        android:textColor="#474C4C"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/userECRelationship2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="30dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/userECRelationship2_textView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:text="Relationship with owner"
+                        android:textColor="#D9474C4C"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/userECRelationship2_EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="6dp"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:cursorVisible="false"
+                        android:ems="10"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:inputType="text"
+                        android:textColor="#474C4C"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/userECContact2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="30dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/userECContact2_textView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:text="Contact Number"
+                        android:textColor="#D9474C4C"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/userECContact2_EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="6dp"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:cursorVisible="false"
+                        android:ems="10"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:inputType="text"
+                        android:textColor="#474C4C"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="38dp"
+                    android:layout_marginEnd="30dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/button3"
+                        android:layout_width="130dp"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#006161"
+                        android:text="PREVIOUS" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

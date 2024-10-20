@@ -7,4 +7,577 @@
     android:layout_height="match_parent"
     tools:context=".PetBoarding">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbarSize="0dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/MainBody"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg1"
+            android:orientation="vertical">
+
+            <!-- Layout for the Header -->
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp" />
+
+            <LinearLayout
+                android:id="@+id/Header"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/header"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/Back_btn"
+                    android:layout_width="8dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:backgroundTint="#00FFFFFF"
+                    android:foregroundGravity="center_vertical"
+                    android:textAlignment="center"
+                    app:srcCompat="@drawable/back_btn" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="40dp"
+                    android:layout_weight="4"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:fontFeatureSettings="georgia"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="PET BOARDING"
+                    android:textColor="#005353"
+                    android:textColorLink="#0DFFFFFF"
+                    android:textSize="16sp"
+                    android:typeface="normal" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="235dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:paddingTop="20dp">
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="35dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="Check-in time from 10:00 AM and Check-out time not later than 2:00 PM on the last day of booking."
+                    android:textAlignment="center"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="341dp"
+                android:layout_height="1dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginBottom="18dp"
+                android:background="?android:attr/listDivider" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp"
+                android:fontFamily="@font/montserrat"
+                android:text="Choose a Pet Type *"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:id="@+id/Services"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="35dp"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp">
+
+                        <!-- SMALL Service Type -->
+                        <LinearLayout
+                            android:id="@+id/smallService"
+                            android:layout_width="163dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="18dp"
+                            android:background="@drawable/services_bg"
+                            android:contextClickable="true"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+
+                            <TextView
+                                android:id="@+id/smalltxt1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:text="SMALL"
+                                android:textColor="#FFFFFF"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/smalltxt2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="27dp"
+                                android:fontFamily="@font/montserrat"
+                                android:text="less than 10 kg"
+                                android:textColor="#FFFFFF"
+                                android:textSize="11sp" />
+
+                            <TextView
+                                android:id="@+id/smalltxt3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:text="Php 350.00"
+                                android:textColor="#FFFFFF"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <!-- MEDIUM Service Type -->
+                        <LinearLayout
+                            android:id="@+id/mediumService"
+                            android:layout_width="163dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="18dp"
+                            android:background="@drawable/services_bg"
+                            android:orientation="vertical"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:padding="16dp">
+
+                            <TextView
+                                android:id="@+id/mediumtxt1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:text="MEDIUM"
+                                android:textColor="#FFFFFF"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/mediumtxt2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="27dp"
+                                android:fontFamily="@font/montserrat"
+                                android:text="10.1kg to 20 kg"
+                                android:textColor="#FFFFFF"
+                                android:textSize="11sp" />
+
+                            <TextView
+                                android:id="@+id/mediumtxt3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:text="Php 450.00"
+                                android:textColor="#FFFFFF"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <!-- LARGE Service Type -->
+                        <LinearLayout
+                            android:id="@+id/largeService"
+                            android:layout_width="163dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="18dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="@drawable/services_bg"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+
+                            <TextView
+                                android:id="@+id/largetxt1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:text="LARGE"
+                                android:textColor="#FFFFFF"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/largetxt2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="27dp"
+                                android:fontFamily="@font/montserrat"
+                                android:text="20.1 kg to 25 kg"
+                                android:textColor="#FFFFFF"
+                                android:textSize="11sp" />
+
+                            <TextView
+                                android:id="@+id/largetxt3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:text="Php 550.00"
+                                android:textColor="#FFFFFF"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <!-- X-LARGE Service Type -->
+                        <LinearLayout
+                            android:id="@+id/xlargeService"
+                            android:layout_width="163dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="18dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="@drawable/services_bg"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+
+                            <TextView
+                                android:id="@+id/xlargetxt1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:text="X-LARGE"
+                                android:textColor="#FFFFFF"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/xlargetxt2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="27dp"
+                                android:fontFamily="@font/montserrat"
+                                android:text="25.1 kg and up"
+                                android:textColor="#FFFFFF"
+                                android:textSize="11sp" />
+
+                            <TextView
+                                android:id="@+id/xlargetxt3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:text="Php 650.00"
+                                android:textColor="#FFFFFF"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <!-- CATS Service Type -->
+                        <LinearLayout
+                            android:id="@+id/catsService"
+                            android:layout_width="163dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="18dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="@drawable/services_bg"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+
+                            <TextView
+                                android:id="@+id/catstxt1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:text="CATS"
+                                android:textColor="#FFFFFF"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/catstxt2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="27dp"
+                                android:fontFamily="@font/montserrat"
+                                android:text="all breed"
+                                android:textColor="#FFFFFF"
+                                android:textSize="11sp" />
+
+                            <TextView
+                                android:id="@+id/catstxt3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:text="Php 350.00"
+                                android:textColor="#FFFFFF"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginRight="35dp"
+                android:fontFamily="@font/montserrat"
+                android:text="Choose a Date *"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:id="@+id/CheckIn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/CheckInDate"
+                    android:layout_width="155dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Check-in"
+                        android:textAlignment="viewStart"
+                        android:textSize="11sp" />
+
+                    <EditText
+                        android:id="@+id/editTextText1"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:layout_marginTop="6dp"
+                        android:background="@drawable/rounded_edittext"
+                        android:drawableRight="@drawable/datepicker"
+                        android:ems="10"
+                        android:fontFamily="@font/montserrat"
+                        android:inputType="date"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/CheckInTime"
+                    android:layout_width="155dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_weight="0"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Time"
+                        android:textSize="11sp" />
+
+                    <EditText
+                        android:id="@+id/editTextText3"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:layout_marginTop="6dp"
+                        android:background="@drawable/rounded_edittext"
+                        android:drawableRight="@drawable/timepicker"
+                        android:ems="10"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:inputType="time"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/CheckOut"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/CheckOutDate"
+                    android:layout_width="155dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Check-out"
+                        android:textAlignment="viewStart"
+                        android:textSize="11sp" />
+
+                    <EditText
+                        android:id="@+id/editTextText2"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:layout_marginTop="6dp"
+                        android:background="@drawable/rounded_edittext"
+                        android:drawableRight="@drawable/datepicker"
+                        android:ems="10"
+                        android:fontFamily="@font/montserrat"
+                        android:inputType="date"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/CheckOutTime"
+                    android:layout_width="155dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_weight="0"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Time"
+                        android:textSize="11sp" />
+
+                    <EditText
+                        android:id="@+id/editTextText4"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:layout_marginTop="6dp"
+                        android:background="@drawable/rounded_edittext"
+                        android:drawableRight="@drawable/timepicker"
+                        android:ems="10"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:inputType="time"
+                        android:textSize="13sp"
+
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/Specialnstruction"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="35dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Special Instruction"
+                    android:textAlignment="viewStart"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/editTextTextMultiLine2"
+                    android:layout_width="match_parent"
+                    android:layout_height="72dp"
+                    android:ems="10"
+                    android:gravity="start|top"
+                    android:inputType="textMultiLine"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/rounded_edittext"
+                    android:fontFamily="@font/montserrat"
+                    android:textSize="13sp"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="35dp"
+                android:fontFamily="@font/montserrat"
+                android:text="*Early Check-in and Check-out will be charged Php50/pet/hour."
+                android:textAlignment="viewStart"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="35dp"
+                android:fontFamily="@font/montserrat"
+                android:text="*Food and other essentials are shouldered by the owner."
+                android:textAlignment="viewStart"
+                android:textSize="10sp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ButtonLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/btnContinueBoarding"
+                    android:layout_width="134dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="58dp"
+                    android:layout_marginBottom="58dp"
+                    android:backgroundTint="#006161"
+                    android:text="CONTINUE"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

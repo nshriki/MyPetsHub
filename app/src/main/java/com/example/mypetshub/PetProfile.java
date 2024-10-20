@@ -1,6 +1,9 @@
 package com.example.mypetshub;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +22,13 @@ public class PetProfile extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        // Add pet button
+        Button btnAddPet = findViewById(R.id.btnAddPet);
+        btnAddPet.setOnClickListener(v -> {
+            Intent intent = new Intent(PetProfile.this, PetProfileInput.class);
+            startActivity(intent);
         });
     }
 }

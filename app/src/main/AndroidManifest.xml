@@ -3,10 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
 
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
+        android:enableOnBackInvokedCallback="true"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -14,6 +21,45 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyPetsHub"
         tools:targetApi="31">
+        <activity
+            android:name=".Dashboard"
+            android:exported="false" />
+        <activity
+            android:name=".SplashScreen"
+            android:exported="false" />
+        <activity
+            android:name=".PetAppointments2"
+            android:exported="false" />
+        <activity
+            android:name=".PetProfileDisplay"
+            android:exported="false" />
+        <activity
+            android:name=".UserProfileDisplay2"
+            android:exported="false" />
+        <activity
+            android:name=".MainMenu"
+            android:exported="false" />
+        <activity
+            android:name=".Settings"
+            android:exported="false" />
+        <activity
+            android:name=".UserProfileDisplay1"
+            android:exported="false" />
+        <activity
+            android:name=".WebView"
+            android:exported="false" />
+        <activity
+            android:name=".UserProfileInput2"
+            android:exported="false" />
+        <activity
+            android:name=".PetProfileInput2"
+            android:exported="false" />
+        <activity
+            android:name=".PetProfileInput"
+            android:exported="false" />
+        <activity
+            android:name=".PetBoardingConfirmation"
+            android:exported="false" />
         <activity
             android:name=".ForgotPassword"
             android:exported="false" />
@@ -51,19 +97,23 @@
             android:name=".TermsCondition"
             android:exported="false" />
         <activity
-            android:name=".UserProfile"
+            android:name=".UserProfileInput1"
             android:exported="false" />
         <activity
             android:name=".HomePage"
             android:exported="false" />
         <activity
             android:name=".WelcomeImages"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".PhoneNumberInput"
-            android:exported="false" /> <!-- <activity -->
-        <!-- android:name=".MainActivity2" -->
-        <!-- android:exported="false" /> -->
+            android:exported="false" />
         <activity
             android:name=".SignIn"
             android:exported="false" />
@@ -74,11 +124,11 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
 
         <meta-data

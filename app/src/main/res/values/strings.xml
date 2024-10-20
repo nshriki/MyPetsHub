@@ -1,3 +1,24 @@
+<!--<resources>-->
+<!--    <string name="app_name">MyPetsHub</string>-->
+<!--    <string name="title_activity_login">LoginActivity</string>-->
+<!--    <string name="prompt_email">Email</string>-->
+<!--    <string name="prompt_password">Password</string>-->
+<!--    <string name="action_sign_in">Sign in or register</string>-->
+<!--    <string name="action_sign_in_short">Sign in</string>-->
+<!--    <string name="welcome">"Welcome !"</string>-->
+<!--    <string name="invalid_username">Not a valid username</string>-->
+<!--    <string name="invalid_password">Password must be >5 characters</string>-->
+<!--    <string name="login_failed">"Login failed"</string>-->
+<!--    <string name="pet_services">Hamugaway is your pet’s trusted haven, \noffering personalized care and a loving \nenvironment. Our services include \n<b>boarding</b>, <b>daycare</b>, and <b>pet sitting</b>.</string>-->
+<!--    <string name="pet_services2">With a dedicated team and a \ncommitment to excellence, we ensure \nyour furry friend feels right at home.</string>-->
+<!--    <string name="leavereview"><u>Leave a review</u></string>-->
+<!--    <string name="signup"><u>Sign Up</u></string>-->
+<!--    <string name="signin"><u>Sign In</u></string>-->
+<!--    <string name="addpettxt">Keep Track Of \nYour Pet Details</string>-->
+<!--    <string name="feedbacktxt">Want to leave \nus a feedback</string>-->
+<!--</resources>-->
+
+
 <resources>
     <string name="app_name">MyPetsHub</string>
     <string name="title_activity_login">LoginActivity</string>
@@ -9,4 +30,35 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="pet_services">Hamugaway is your pet’s trusted \nhaven, offering personalized care \nand a loving environment. Our \nservices include <b>boarding</b>, <b>daycare</b>, \nand <b>pet sitting</b>.</string>
+    <string name="pet_services2">With a dedicated team and a \ncommitment to excellence, we \nensure your furry friend feels \nright at home.</string>
+    <string name="leavereview"><u>Leave a review</u></string>
+    <string name="signup"><u>Sign Up</u></string>
+    <string name="signin"><u>Sign In</u></string>
+    <string name="addpettxt">Keep Track Of \nYour Pet Details</string>
+    <string name="feedbacktxt">Want to leave \nus a feedback</string>
+    <string name="termsConditions"><u>Terms &amp; Conditions</u></string>
+
+    // Welcome Images (Onboarding Texts)
+    <string name="img1_title">DAILY WALKS \nAND EXERCISE</string>
+    <string name="img1_text">Our dedicated staff ensures your pet receives \nregular daily walks and exercise, promoting their \nphysical and mental well-being.</string>
+
+    <string name="img2_title">24/7 CARE AND \nSUPERVISION</string>
+    <string name="img2_text">Constant supervision and care are provided to \nguarantee your pet\'s safety and comfort. Our staff is \nalways available to ensure your pet\'s needs are met.</string>
+
+    <string name="img3_title">BOOKING MADE EASY</string>
+    <string name="img3_text">Experience the convenience of our simplified booking \nsystem. Book your pet\'s stay with just a few clicks.</string>
+
+    // Navigation Sidebar Menu
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="gender"></string>
+    <string-array name="array_gender">
+        <item>Male</item>
+        <item>Female</item>
+        <item>I prefer not to say</item>
+    </string-array>
+
+    <string name="nav_app_name">Bottom Navigation</string>
 </resources>

@@ -3,7 +3,7 @@
 <!--    &lt;!&ndash; Error state &ndash;&gt;-->
 <!--    <item android:color="@color/colorError" android:state_error="true" />-->
     <!-- Focused state -->
-    <item android:color="#CC355D64" android:state_focused="true" />
+    <item android:color="#005353" android:state_focused="true" />
     <!-- Default/unfocused state -->
-    <item android:color="#355D64" />
+    <item android:color="#80005353" />
 </selector>

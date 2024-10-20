@@ -1,6 +1,7 @@
 package com.example.mypetshub;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,4 +22,12 @@ public class TermsCondition extends AppCompatActivity {
             return insets;
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        Log.d("TermsCondition", "Back button pressed");
+        super.onBackPressed(); // Ensure the default behavior is called
+    }
+
+
 }
