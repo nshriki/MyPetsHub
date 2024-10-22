@@ -292,7 +292,8 @@ public class SignIn extends AppCompatActivity {
 
     private static final String TAG = "SignIn";
     private TextInputEditText inputEmailSignIn, inputPassword;
-    private Button btnLogin, btnForgotPassword;
+    private Button btnLogin;
+//    private Button btnForgotPassword;
     private TextView txtSignUpClickable;
 
     @Override
@@ -304,15 +305,15 @@ public class SignIn extends AppCompatActivity {
         inputEmailSignIn = findViewById(R.id.inputEmailSignIn);
         inputPassword = findViewById(R.id.inputPassword);
         btnLogin = findViewById(R.id.btnLogin);
-        btnForgotPassword = findViewById(R.id.btnForgotPassword);
+//        btnForgotPassword = findViewById(R.id.btnForgotPassword);
         txtSignUpClickable = findViewById(R.id.txtSignUpClickable);
 
         // Set up click listeners
         btnLogin.setOnClickListener(v -> performLogin());
-        btnForgotPassword.setOnClickListener(v -> {
-            Intent intent = new Intent(SignIn.this, ForgotPassword.class);
-            startActivity(intent);
-        });
+//        btnForgotPassword.setOnClickListener(v -> {
+//            Intent intent = new Intent(SignIn.this, ForgotPassword.class);
+//            startActivity(intent);
+//        });
         txtSignUpClickable.setOnClickListener(v -> {
             Intent intent = new Intent(SignIn.this, SignUp.class);
             startActivity(intent);

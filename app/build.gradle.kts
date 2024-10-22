@@ -62,4 +62,6 @@ dependencies {
     implementation(libs.viewpager2)
     implementation(libs.dotsindicator)
     implementation(libs.material.v130alpha03)
+    implementation(libs.glide)
+    annotationProcessor(libs.glide.compiler)
 }

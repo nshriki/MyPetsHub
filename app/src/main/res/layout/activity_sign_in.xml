@@ -90,36 +90,6 @@
             android:textStyle="bold" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.88"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPassword"
-        app:layout_constraintVertical_bias="0.01">
-
-        <Button
-            android:id="@+id/btnForgotPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#00FFFFFF"
-            android:fontFamily="@font/montserrat"
-            android:paddingLeft="10dp"
-            android:paddingTop="2dp"
-            android:paddingRight="10dp"
-            android:paddingBottom="2dp"
-            android:text="Forgot Password?"
-            android:textAlignment="viewStart"
-            android:textColor="#000000"
-            android:textSize="14sp" />
-
-
-    </LinearLayout>
-
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="0dp"
@@ -132,7 +102,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/textInputLayoutPassword"
         app:layout_constraintStart_toStartOf="@+id/textInputLayoutPassword"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPassword"
         app:layout_constraintVertical_bias="0.3" />
 
     <LinearLayout

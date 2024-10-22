@@ -55,7 +55,7 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginRight="8dp"
                     android:layout_weight="0"
                     android:backgroundTint="#00FFFFFF"
                     android:foregroundGravity="center_vertical"
@@ -72,15 +72,15 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/imageView2"
+                    android:id="@+id/user_ProfileView"
                     android:layout_width="130sp"
                     android:layout_height="130sp"
                     android:layout_marginBottom="10dp"
                     android:foregroundGravity="center"
-                    app:srcCompat="@drawable/pet_profile_storage" />
+                    app:srcCompat="@drawable/user_avatar" />
 
                 <TextView
-                    android:id="@+id/userName_textView"
+                    android:id="@+id/user_Name1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat_extrabold"
@@ -125,7 +125,7 @@
                 <LinearLayout
                     android:id="@+id/userName"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
                     android:layout_marginTop="27dp"
                     android:layout_marginRight="30dp"
@@ -164,7 +164,7 @@
                             android:textSize="14sp" />
 
                         <TextView
-                            android:id="@+id/userName2_editText"
+                            android:id="@+id/user_Name2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
@@ -175,7 +175,7 @@
                             android:fontFamily="@font/montserrat_semibold"
                             android:inputType="text"
                             android:textColor="#474C4C"
-                            android:textSize="16sp"
+                            android:textSize="17sp"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -184,7 +184,7 @@
                 <LinearLayout
                     android:id="@+id/userNickname"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
                     android:layout_marginTop="18dp"
                     android:layout_marginRight="30dp"
@@ -220,7 +220,7 @@
                             android:textSize="13sp" />
 
                         <TextView
-                            android:id="@+id/userNName2_editText"
+                            android:id="@+id/user_Nname"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
@@ -240,7 +240,7 @@
                 <LinearLayout
                     android:id="@+id/userGender"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
                     android:layout_marginTop="18dp"
                     android:layout_marginRight="30dp"
@@ -276,7 +276,7 @@
                             android:textSize="13sp" />
 
                         <TextView
-                            android:id="@+id/userGender2_EditText"
+                            android:id="@+id/user_Gender"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
@@ -296,7 +296,7 @@
                 <LinearLayout
                     android:id="@+id/userBirthday"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
                     android:layout_marginTop="18dp"
                     android:layout_marginRight="30dp"
@@ -332,7 +332,7 @@
                             android:textSize="13sp" />
 
                         <TextView
-                            android:id="@+id/userBirthday2_EditText"
+                            android:id="@+id/user_Birthday"
                             android:layout_width="match_parent"
                             android:layout_height="20dp"
                             android:layout_marginTop="6dp"
@@ -352,7 +352,7 @@
                 <LinearLayout
                     android:id="@+id/userAge"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
                     android:layout_marginTop="18dp"
                     android:layout_marginRight="30dp"
@@ -393,7 +393,7 @@
                                 android:textSize="13sp" />
 
                             <TextView
-                                android:id="@+id/userAge2_EditText"
+                                android:id="@+id/user_Age"
                                 android:layout_width="match_parent"
                                 android:layout_height="20dp"
                                 android:layout_marginTop="6dp"
@@ -414,7 +414,7 @@
                 <LinearLayout
                     android:id="@+id/userNationality"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
                     android:layout_marginTop="18dp"
                     android:layout_marginRight="30dp"
@@ -450,7 +450,7 @@
                             android:textSize="13sp" />
 
                         <TextView
-                            android:id="@+id/userNationality2_EditText"
+                            android:id="@+id/user_Nationality"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
@@ -470,7 +470,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
                     android:layout_marginTop="18dp"
                     android:layout_marginRight="30dp"
@@ -588,7 +588,7 @@
                     <LinearLayout
                         android:id="@+id/userEmail1"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:gravity="center"
                         android:orientation="vertical">
 
@@ -602,7 +602,7 @@
                             android:textSize="14sp" />
 
                         <TextView
-                            android:id="@+id/email3"
+                            android:id="@+id/user_Email"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
@@ -613,7 +613,7 @@
                             android:fontFamily="@font/montserrat_semibold"
                             android:inputType="text"
                             android:textColor="#474C4C"
-                            android:textSize="16sp"
+                            android:textSize="17sp"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -623,7 +623,7 @@
                 <LinearLayout
                     android:id="@+id/userContactNumber"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="18dp"
                     android:orientation="horizontal">
 
@@ -658,7 +658,7 @@
                             android:textSize="14sp" />
 
                         <TextView
-                            android:id="@+id/contact2"
+                            android:id="@+id/user_ContactNumber"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
@@ -669,7 +669,7 @@
                             android:fontFamily="@font/montserrat_semibold"
                             android:inputType="text"
                             android:textColor="#474C4C"
-                            android:textSize="16sp"
+                            android:textSize="17sp"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -720,7 +720,7 @@
                 <LinearLayout
                     android:id="@+id/ec_Name"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="17dp"
                     android:orientation="horizontal">
 
@@ -755,7 +755,7 @@
                             android:textSize="14sp" />
 
                         <TextView
-                            android:id="@+id/ecName2"
+                            android:id="@+id/user_ecName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
@@ -766,7 +766,7 @@
                             android:fontFamily="@font/montserrat_semibold"
                             android:inputType="text"
                             android:textColor="#474C4C"
-                            android:textSize="16sp"
+                            android:textSize="17sp"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -776,7 +776,7 @@
                 <LinearLayout
                     android:id="@+id/ec_Relationship"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="18dp"
                     android:orientation="horizontal">
 
@@ -811,7 +811,7 @@
                             android:textSize="14sp" />
 
                         <TextView
-                            android:id="@+id/ecRel2"
+                            android:id="@+id/user_ecRelationship"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
@@ -822,7 +822,7 @@
                             android:fontFamily="@font/montserrat_semibold"
                             android:inputType="text"
                             android:textColor="#474C4C"
-                            android:textSize="16sp"
+                            android:textSize="17sp"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -832,7 +832,7 @@
                 <LinearLayout
                     android:id="@+id/ec_ContactNumber"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="18dp"
                     android:orientation="horizontal">
 
@@ -867,7 +867,7 @@
                             android:textSize="14sp" />
 
                         <TextView
-                            android:id="@+id/ecNum2"
+                            android:id="@+id/user_ecContactNumber"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
@@ -878,7 +878,7 @@
                             android:fontFamily="@font/montserrat_semibold"
                             android:inputType="text"
                             android:textColor="#474C4C"
-                            android:textSize="16sp"
+                            android:textSize="17sp"
                             android:textStyle="bold" />
 
                     </LinearLayout>

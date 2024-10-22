@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <layer-list>
+            <item
+                android:drawable="@drawable/rounded_edittext" />
+            <item
+                android:drawable="@drawable/baseline_person_outline_24"
+                android:gravity="start"/>
+            <item
+                android:drawable="@drawable/baseline_navigate_next_24"
+                android:gravity="end"/>
+        </layer-list>
+    </item>
+</selector>

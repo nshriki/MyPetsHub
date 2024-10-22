@@ -18,6 +18,12 @@
     <color name="green">#005353</color>
     <color name="white">#FFFFFF</color>
 
+    <color name="dashboard_color_bg">#70FFFFFF</color>
+
+    <color name="dialog_color_1">#FDD736</color>
+    <color name="dialog_color_2">#385796</color>
+    <color name="dialog_color_3">#006F6F</color>
+
 
 <!--    <color name="button_top_color">#BD006F6F</color>-->
 <!--    <color name="button_bottom_color">#FF004E4E</color>-->

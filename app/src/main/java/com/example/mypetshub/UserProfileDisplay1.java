@@ -125,13 +125,16 @@ public class UserProfileDisplay1 extends AppCompatActivity {
         setContentView(R.layout.activity_user_profile_display1);
 
         // Initialize EditText fields
-        userName_textView = findViewById(R.id.userName_textView);
-        userName2_editText = findViewById(R.id.userName2_editText);
-        userNName2_editText = findViewById(R.id.userNName2_editText);
-        userNationality2_editText = findViewById(R.id.userNationality2_EditText);
-        userGender2_editText = findViewById(R.id.userGender2_EditText);
-        userBirthday2_editText = findViewById(R.id.userBirthday2_EditText);
-        userAge2_editText = findViewById(R.id.userAge2_EditText);
+
+        // commented on 10/20/2024 11:30pm
+
+//        userName_textView = findViewById(R.id.userName_textView);
+//        userName2_editText = findViewById(R.id.userName2_editText);
+//        userNName2_editText = findViewById(R.id.userNName2_editText);
+//        userNationality2_editText = findViewById(R.id.userNationality2_EditText);
+//        userGender2_editText = findViewById(R.id.userGender2_EditText);
+//        userBirthday2_editText = findViewById(R.id.userBirthday2_EditText);
+//        userAge2_editText = findViewById(R.id.userAge2_EditText);
 //        userAddress2_editText = findViewById(R.id.userAddress2_editText);
 //        edituserprofilepage1_next_btn = findViewById(R.id.nextBtn_UPD1);
 //        petBirthday3_textView = findViewById(R.id.userBirthday_textView);

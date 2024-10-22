@@ -361,11 +361,18 @@
 
 package com.example.mypetshub;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -374,10 +381,23 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.LinearSnapHelper;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
+
+import android.os.AsyncTask;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class UserDashboard extends AppCompatActivity {
 
@@ -386,11 +406,17 @@ public class UserDashboard extends AppCompatActivity {
     private Handler autoScrollHandler;
     private Runnable autoScrollRunnable;
     private int currentPosition = 0;
+    private EditText checkInCalendar, checkOutCalendar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_dashboard);
+
+        FrameLayout petProfileDashboardFrame = findViewById(R.id.petProfileDashboardFrame);
+        ImageView petProfileDashboardImageView = findViewById(R.id.petProfileDashboardImageView);
+        TextView petNameDashboardText = findViewById(R.id.petNameDashboardText);
+        TextView noPetAddedText = findViewById(R.id.noPetAddedText);
 
         // Check if the user is logged in
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
@@ -400,18 +426,39 @@ public class UserDashboard extends AppCompatActivity {
             // Redirect to SignIn Activity
             Intent intent = new Intent(UserDashboard.this, SignIn.class);
             startActivity(intent);
-            finish(); // Close the current activity
-            return; // Exit onCreate
+            finish();
+            return;
         }
 
-        // For "Welcome, User" in the dashboard
+        fetchPetData(petProfileDashboardFrame, petProfileDashboardImageView, petNameDashboardText, noPetAddedText);
+
+        // For "Welcome, User!" in the dashboard
         String userName = sharedPreferences.getString("usersName", "User");
         TextView usersNameTextView = findViewById(R.id.usersName);
         usersNameTextView.setText(userName);
 
+        // check availability calendar
+        checkInCalendar = findViewById(R.id.checkIn_editText);
+        checkOutCalendar = findViewById(R.id.checkOut_editText);
+
+        checkInCalendar.setOnClickListener(v -> showDatePickerDialog_checkIn(checkInCalendar));
+        checkOutCalendar.setOnClickListener(v -> showDatePickerDialog_checkOut(checkOutCalendar));
+
+
+        ImageButton checkavailbtn = findViewById(R.id.checkavailbtn);
+        checkavailbtn.setOnClickListener(view -> {
+            Intent intent = new Intent(UserDashboard.this, PetBoarding.class);
+
+            String checkInDate = checkInCalendar.getText().toString();
+            String checkOutDate = checkOutCalendar.getText().toString();
+
+            intent.putExtra("CHECK_IN_DATE", checkInDate);
+            intent.putExtra("CHECK_OUT_DATE", checkOutDate);
+
+            startActivity(intent);
+        });
 
         recyclerView = findViewById(R.id.recyclerView);
-
 
         List<SliderItem> sliderItems = new ArrayList<>();
         sliderItems.add(new SliderItem(R.drawable.slide1_v6, ""));
@@ -446,32 +493,153 @@ public class UserDashboard extends AppCompatActivity {
             startActivity(intent);
         });
 
+        // show rating dialog
+        TextView review_Button = findViewById(R.id.review_Button);
+        review_Button.setOnClickListener(view -> {
+            RateUsDialog rateUsDialog = new RateUsDialog(UserDashboard.this);
+            rateUsDialog.getWindow().setBackgroundDrawable(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
+            rateUsDialog.setCancelable(false);
+            rateUsDialog.show();
+        });
+
+
+
         BottomNavigationView bottomNav = findViewById(R.id.bottomNavigationView);
         bottomNav.setSelectedItemId(R.id.bottom_home);
 
-//        bottomNav.setOnItemSelectedListener(item -> {
-//            switch (item.getItemId()){
-//                case R.id.bottom_home:
-//                    return true;
-//                case R.id.bottom_boarding:
-//                    startActivity(new Intent(getApplicationContext(), PetBoarding.class));
-//                    finish();
-//                    return true;
-//                case R.id.bottom_mypets:
-//                    startActivity(new Intent(getApplicationContext(), PetProfile.class));
-//                    finish();
-//                    return true;
-//                case R.id.bottom_appointments:
-//                    startActivity(new Intent(getApplicationContext(), PetAppointments.class));
-//                    finish();
-//                    return true;
-//                case R.id.bottom_profile:
-//                    startActivity(new Intent(getApplicationContext(), PetProfile.class));
-//                    finish();
-//                    return true;
-//            }
-//            return false;
-//        });
+        bottomNav.setOnItemSelectedListener(item -> {
+            if (item.getItemId() == R.id.bottom_home) {
+                return true;
+            } else if (item.getItemId() == R.id.bottom_boarding) {
+                startActivity(new Intent(getApplicationContext(), PetBoarding.class));
+                finish();
+                return true;
+            } else if (item.getItemId() == R.id.bottom_appointments) {
+                startActivity(new Intent(getApplicationContext(), PetAppointments.class));
+                finish();
+                return true;
+            } else if (item.getItemId() == R.id.bottom_profile) {
+                startActivity(new Intent(getApplicationContext(), UserProfile.class));
+                finish();
+                return true;
+            }
+            return false;
+        });
+
+        FloatingActionButton fabMyPets = findViewById(R.id.mypets_fab);
+        fabMyPets.setOnClickListener(view -> {
+            startActivity(new Intent(getApplicationContext(), PetProfile.class));
+        });
+    }
+
+    private void fetchPetData(FrameLayout petProfileDashboardFrame, ImageView petProfileDashboardImageView, TextView petNameDashboardText, TextView noPetAddedText) {
+        String urlString = "https://hamugaway.scarlet2.io/fetchingpet.php?";
+
+        new AsyncTask<Void, Void, String>() {
+            @Override
+            protected String doInBackground(Void... voids) {
+                try {
+                    URL url = new URL(urlString);
+                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                    connection.setRequestMethod("GET");
+                    connection.connect();
+
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                    StringBuilder result = new StringBuilder();
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        result.append(line);
+                    }
+                    reader.close();
+                    return result.toString();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    return null;
+                }
+            }
+
+            @Override
+            protected void onPostExecute(String result) {
+                try {
+                    if (result != null) {
+                        JSONArray jsonArray = new JSONArray(result);
+                        if (jsonArray.length() > 0) {
+                            // Pet exists
+                            petProfileDashboardFrame.setVisibility(View.VISIBLE);
+                            noPetAddedText.setVisibility(View.GONE);
+
+                            JSONObject pet = jsonArray.getJSONObject(0);
+                            petNameDashboardText.setText(pet.getString("pet_name"));
+
+                            // Load image using Glide
+                            String imageUrl = pet.getString("pet_image");
+                            Glide.with(UserDashboard.this)
+                                    .load(imageUrl)
+                                    .centerCrop()
+                                    .into(petProfileDashboardImageView);
+                        } else {
+                            // No pet added, show the "No pet added" message
+                            petProfileDashboardFrame.setVisibility(View.GONE);
+                            noPetAddedText.setVisibility(View.VISIBLE);
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }.execute();
+    }
+
+    private void showDatePickerDialog_checkIn(EditText checkInCalendar) {
+
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                this,
+                (view, selectedYear, selectedMonth, selectedDay) -> {
+                    // Create a calendar instance and set the selected date
+                    Calendar selectedCalendar = Calendar.getInstance();
+                    selectedCalendar.set(selectedYear, selectedMonth, selectedDay);
+
+                    // Format the date as "MMM. dd, yyyy"
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("MMM. dd, yyyy", Locale.getDefault());
+                    String formattedDate = dateFormat.format(selectedCalendar.getTime());
+
+                    // Set the formatted date to the EditText
+                    checkInCalendar.setText(formattedDate);
+                },
+                year, month, day
+        );
+        datePickerDialog.show();
+    }
+
+    private void showDatePickerDialog_checkOut(EditText checkOutCalendar) {
+
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                this,
+                (view, selectedYear, selectedMonth, selectedDay) -> {
+                    // Create a calendar instance and set the selected date
+                    Calendar selectedCalendar = Calendar.getInstance();
+                    selectedCalendar.set(selectedYear, selectedMonth, selectedDay);
+
+                    // Format the date as "MMM. dd, yyyy"
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("MMM. dd, yyyy", Locale.getDefault());
+                    String formattedDate = dateFormat.format(selectedCalendar.getTime());
+
+                    // Set the formatted date to the EditText
+                    checkOutCalendar.setText(formattedDate);
+                },
+                year, month, day
+        );
+        datePickerDialog.show();
     }
 
     @Override
@@ -479,4 +647,10 @@ public class UserDashboard extends AppCompatActivity {
         super.onDestroy();
         autoScrollHandler.removeCallbacks(autoScrollRunnable);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
 }

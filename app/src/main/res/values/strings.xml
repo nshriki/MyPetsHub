@@ -38,6 +38,7 @@
     <string name="addpettxt">Keep Track Of \nYour Pet Details</string>
     <string name="feedbacktxt">Want to leave \nus a feedback</string>
     <string name="termsConditions"><u>Terms &amp; Conditions</u></string>
+    <string name="terms_condition">Terms &amp; Conditions</string>
 
     // Welcome Images (Onboarding Texts)
     <string name="img1_title">DAILY WALKS \nAND EXERCISE</string>
@@ -60,5 +61,19 @@
         <item>I prefer not to say</item>
     </string-array>
 
+    <string name="pet_gender"></string>
+    <string-array name="array_gender_pet">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+    <string name="species"></string>
+    <string-array name="array_species">
+        <item>Canine</item>
+        <item>Feline</item>
+    </string-array>
+
     <string name="nav_app_name">Bottom Navigation</string>
+
+    <string name="click_here"><u>Click Here</u></string>
 </resources>

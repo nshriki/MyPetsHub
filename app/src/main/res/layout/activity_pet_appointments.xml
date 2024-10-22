@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".PetAppointments">
 
     <ScrollView
@@ -37,23 +38,23 @@
                 <ImageButton
                     android:id="@+id/Back_btn"
                     android:layout_width="8dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:backgroundTint="#00FFFFFF"
                     android:foregroundGravity="center_vertical"
                     android:textAlignment="center"
-                    app:srcCompat="@drawable/back_btn" />
+                    app:srcCompat="@drawable/back_btn_v2" />
 
                 <TextView
                     android:id="@+id/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginRight="50dp"
+                    android:layout_marginRight="40dp"
                     android:layout_weight="4"
                     android:fontFamily="@font/montserrat_bold"
                     android:fontFeatureSettings="georgia"
-                    android:gravity="center_horizontal|center_vertical"
+                    android:gravity="center"
                     android:text="APPOINTMENTS"
                     android:textColor="#005353"
                     android:textColorLink="#0DFFFFFF"
@@ -158,7 +159,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:fontFamily="@font/montserrat_bold"
-                            android:text="PET BORADING" />
+                            android:text="PET BOARDING" />
 
                         <TextView
                             android:id="@+id/serviceDate2"
@@ -208,7 +209,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:fontFamily="@font/montserrat_bold"
-                            android:text="PET BORADING" />
+                            android:text="PET BOARDING" />
 
                         <TextView
                             android:id="@+id/serviceDate3"
@@ -283,7 +284,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:fontFamily="@font/montserrat_bold"
-                            android:text="PET BORADING"
+                            android:text="PET BOARDING"
                             android:textColor="#F26B6A6B" />
 
                         <TextView
@@ -334,7 +335,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:fontFamily="@font/montserrat_bold"
-                            android:text="PET BORADING"
+                            android:text="PET BOARDING"
                             android:textColor="#F26B6A6B" />
 
                         <TextView

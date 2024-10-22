@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -22,8 +23,10 @@ import androidx.core.view.WindowInsetsCompat;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Locale;
 
 public class PetBoarding extends AppCompatActivity {
 
@@ -31,6 +34,7 @@ public class PetBoarding extends AppCompatActivity {
     private TextView smallTxt, mediumTxt, largeTxt, xlargeTxt, catsTxt;
     private Spinner spinnerChoosePet;
     private ArrayList<String> petNames = new ArrayList<>();
+    private ImageButton btnContinueBoarding, Back_btn_boarding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +47,7 @@ public class PetBoarding extends AppCompatActivity {
             return insets;
         });
 
-        Button btnContinueBoarding = findViewById(R.id.btnContinueBoarding);
+        ImageButton btnContinueBoarding = findViewById(R.id.btnContinueBoarding);
         btnContinueBoarding.setOnClickListener(v -> {
             Intent intent = new Intent(PetBoarding.this, PetBoardingConfirmation.class);
             startActivity(intent);
@@ -66,9 +70,9 @@ public class PetBoarding extends AppCompatActivity {
         xlargeTxt = findViewById(R.id.xlargetxt1);
         catsTxt = findViewById(R.id.catstxt1);
 
-//        // Initialize Spinner
-//        spinnerChoosePet = findViewById(R.id.spinnerChoosePet);
-//        fetchPetNames(); // Fetch pet names from the server
+        // Initialize Spinner
+        spinnerChoosePet = findViewById(R.id.spinnerChoosePet);
+        fetchPetNames(); // Fetch pet names from the server
 
         // Set OnClickListeners for service type layout
         findViewById(R.id.smallService).setOnClickListener(v -> selectServiceType((LinearLayout) v));
@@ -77,20 +81,77 @@ public class PetBoarding extends AppCompatActivity {
         findViewById(R.id.xlargeService).setOnClickListener(v -> selectServiceType((LinearLayout) v));
         findViewById(R.id.catsService).setOnClickListener(v -> selectServiceType((LinearLayout) v));
 
-//        // Set OnItemSelectedListener for spinner
-//        spinnerChoosePet.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                // Handle pet selection
-//                String selectedPet = petNames.get(position);
-//                // Do something with the selected pet
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//                // No action needed
-//            }
-//        });
+        // Set OnItemSelectedListener for spinner
+        spinnerChoosePet.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // Handle pet selection
+                String selectedPet = petNames.get(position);
+                // Do something with the selected pet
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // No action needed
+            }
+        });
+
+        // get check in and out date from user dashboard
+        Intent intent = getIntent();
+        String checkIn = intent.getStringExtra("CHECK_IN_DATE");
+        String checkOut = intent.getStringExtra("CHECK_OUT_DATE");
+
+        // Set the received dates into the EditText fields
+        if (checkIn != null) {
+            checkInDate.setText(checkIn);
+        }
+        if (checkOut != null) {
+            checkOutDate.setText(checkOut);
+        }
+
+        btnContinueBoarding.setOnClickListener(null);
+        btnContinueBoarding.setOnClickListener(view -> handleContinueButton());
+
+        Back_btn_boarding = findViewById(R.id.Back_btn);
+        Back_btn_boarding.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent_backbtn_boarding = new Intent(PetBoarding.this, UserDashboard.class);
+                startActivity(intent_backbtn_boarding);
+            }
+        });
+    }
+
+    private void handleContinueButton() {
+        String checkInString = checkInDate.getText().toString();
+        String checkOutString = checkOutDate.getText().toString();
+        String timeInString = checkInTime.getText().toString();
+        String timeOutString = checkOutTime.getText().toString();
+
+        // Validate inputs with specific error messages
+        if (checkInString.isEmpty()) {
+            checkInDate.setError("Check-in date is required.");
+            return;
+        }
+        if (checkOutString.isEmpty()) {
+            checkOutDate.setError("Check-out date is required.");
+            return;
+        }
+        if (timeInString.isEmpty()) {
+            checkInTime.setError("Check-in time is required.");
+            return;
+        }
+        if (timeOutString.isEmpty()) {
+            checkOutTime.setError("Check-out time is required.");
+            return;
+        }
+
+        btnContinueBoarding.setEnabled(false);
+        saveBoarding(checkInString, checkOutString, timeInString, timeOutString);
+
+    }
+
+    private void saveBoarding(String checkInString, String checkOutString, String timeInString, String timeOutString) {
     }
 
     private void fetchPetNames() {
@@ -138,8 +199,16 @@ public class PetBoarding extends AppCompatActivity {
         DatePickerDialog datePickerDialog = new DatePickerDialog(
                 this,
                 (view, selectedYear, selectedMonth, selectedDay) -> {
-                    String selectedDate = (selectedMonth + 1) + "/" + selectedDay + "/" + selectedYear;
-                    editText.setText(selectedDate);
+                    // Create a calendar instance and set the selected date
+                    Calendar selectedCalendar = Calendar.getInstance();
+                    selectedCalendar.set(selectedYear, selectedMonth, selectedDay);
+
+                    // Format the date as "MMM. dd, yyyy"
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("MMM. dd, yyyy", Locale.getDefault());
+                    String formattedDate = dateFormat.format(selectedCalendar.getTime());
+
+                    // Set the formatted date to the EditText
+                    editText.setText(formattedDate);
                 },
                 year, month, day
         );
@@ -186,4 +255,10 @@ public class PetBoarding extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
 }
