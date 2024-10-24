@@ -853,8 +853,8 @@ public class UserProfileInput1 extends AppCompatActivity {
 
         // Set gender options in the spinner
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.array_gender, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                R.array.array_gender, R.layout.spinner_color_layout);
+        adapter.setDropDownViewResource(R.layout.spinner_layout_textview);
         input_user_Gender.setAdapter(adapter);
     }
 
@@ -919,8 +919,18 @@ public class UserProfileInput1 extends AppCompatActivity {
             input_user_LName.setText(jsonObject.getString("last_name"));
             input_user_Nickname.setText(jsonObject.getString("nickname"));
             input_user_Nationality.setText(jsonObject.getString("nationality"));
-            input_user_Birthday.setText(jsonObject.getString("birthday"));
-            calculateAndSetAge(jsonObject.getString("birthday")); // Calculate age based on birthday
+
+            // Convert birthday to "MMM. dd, yyyy" format
+            String birthday = jsonObject.getString("birthday");
+            SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+            SimpleDateFormat outputFormat = new SimpleDateFormat("MMM. dd, yyyy", Locale.getDefault());
+            Date birthDate = inputFormat.parse(birthday);
+            String formattedBirthday = outputFormat.format(birthDate);
+
+            // Set formatted birthday in the EditText
+            input_user_Birthday.setText(formattedBirthday);
+
+            calculateAndSetAge(jsonObject.getString("birthday"));
             input_user_Address.setText(jsonObject.getString("address"));
             input_user_Email.setText(jsonObject.getString("email"));
             input_user_PhoneNumber.setText(jsonObject.getString("phone_number"));
@@ -930,7 +940,7 @@ public class UserProfileInput1 extends AppCompatActivity {
 
             // Set the gender in the spinner
             setSpinnerSelection(jsonObject.getString("gender"));
-        } catch (JSONException e) {
+        } catch (JSONException | ParseException e) {
             Log.e("UserProfileInput1", "Error populating user data", e);
             Toast.makeText(this, "Error populating user data.", Toast.LENGTH_SHORT).show();
         }
@@ -979,6 +989,18 @@ public class UserProfileInput1 extends AppCompatActivity {
         String ecRelationship = input_user_ecRelationship.getText().toString().trim();
         String ecPhoneNumber = input_user_ecPhoneNumber.getText().toString().trim();
         String profileImage = "";
+
+        // Convert the birthday to "yyyy-MM-dd" format if not already in that format
+        SimpleDateFormat inputFormat = new SimpleDateFormat("MMM. dd, yyyy", Locale.getDefault());
+        SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        try {
+            Date date = inputFormat.parse(birthday);  // Parse the user-entered birthday
+            birthday = outputFormat.format(date);  // Format the date for database
+        } catch (ParseException e) {
+            Log.e("SaveUserData", "Error formatting birthday", e);
+            Toast.makeText(this, "Error with the birthday format", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         // Create JSON object with updated data
         JSONObject json = new JSONObject();
@@ -1030,6 +1052,8 @@ public class UserProfileInput1 extends AppCompatActivity {
 
                     if (response.isSuccessful()) {
                         runOnUiThread(() -> Toast.makeText(UserProfileInput1.this, "Data updated successfully", Toast.LENGTH_SHORT).show());
+                        Intent intent = new Intent(UserProfileInput1.this, UserProfileDisplay1.class);
+                        startActivity(intent);
                     } else {
                         runOnUiThread(() -> Toast.makeText(UserProfileInput1.this, "Failed to update data: " + responseData, Toast.LENGTH_SHORT).show());
                     }
@@ -1054,9 +1078,12 @@ public class UserProfileInput1 extends AppCompatActivity {
                     selectedCalendar.set(selectedYear, selectedMonth, selectedDay);
 
                     // Format the date as "YYYY-MM-DD"
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("MMM. dd, yyyy", Locale.getDefault());
                     editText.setText(dateFormat.format(selectedCalendar.getTime()));
-                    calculateAndSetAge(dateFormat.format(selectedCalendar.getTime()));
+
+                    // Format "yyyy-MM-dd" for age calculation
+                    SimpleDateFormat internalFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+                    calculateAndSetAge(internalFormat.format(selectedCalendar.getTime()));
                 },
                 year, month, day);
         datePickerDialog.show();

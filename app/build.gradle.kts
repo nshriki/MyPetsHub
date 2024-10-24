@@ -64,4 +64,7 @@ dependencies {
     implementation(libs.material.v130alpha03)
     implementation(libs.glide)
     annotationProcessor(libs.glide.compiler)
+    implementation(libs.codesgood.justifiedtextview)
+    implementation(libs.library)
+    implementation(libs.picasso)
 }

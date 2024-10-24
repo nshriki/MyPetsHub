@@ -273,37 +273,75 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/petBirthday"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="18dp"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/petBirthday1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:text="Birthday"
-                        android:textColor="#474C4C"
-                        android:textSize="13sp" />
+                    <LinearLayout
+                        android:id="@+id/petBirthday"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="11dp"
+                        android:orientation="vertical">
 
-                    <EditText
-                        android:id="@+id/input_pet_Birthday"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginTop="6dp"
-                        android:background="@drawable/rounded_edittext"
-                        android:drawableRight="@drawable/datepicker"
-                        android:ems="10"
-                        android:focusable="false"
-                        android:editable="false"
-                        android:clickable="true"
-                        android:fontFamily="@font/montserrat"
-                        android:inputType="datetime|date"
-                        android:textColor="#474C4C"
-                        android:textSize="14sp"/>
+                        <TextView
+                            android:id="@+id/petBirthday1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Birthday"
+                            android:textColor="#474C4C"
+                            android:textSize="13sp" />
 
+                        <EditText
+                            android:id="@+id/input_pet_Birthday"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="6dp"
+                            android:background="@drawable/rounded_edittext"
+                            android:drawableRight="@drawable/datepicker"
+                            android:ems="10"
+                            android:focusable="false"
+                            android:editable="false"
+                            android:clickable="true"
+                            android:fontFamily="@font/montserrat"
+                            android:inputType="datetime|date"
+                            android:textColor="#474C4C"
+                            android:textSize="14sp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView23"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Age"
+                            android:textColor="#474C4C"
+                            android:textSize="13sp" />
+
+                        <EditText
+                            android:id="@+id/input_pet_Age"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="6dp"
+                            android:background="@drawable/rounded_edittext"
+                            android:ems="10"
+                            android:enabled="false"
+                            android:fontFamily="@font/montserrat"
+                            android:inputType="number|numberSigned"
+                            android:textColor="#474C4C"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
                 </LinearLayout>
 
             </LinearLayout>

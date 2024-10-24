@@ -10,6 +10,8 @@ junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 appcompat = "1.7.0"
+justifiedtextviewVersion = "1.1.0"
+library = "1.1"
 loggingInterceptor = "4.9.3"
 material = "1.12.0"
 activity = "1.9.1"
@@ -19,6 +21,7 @@ lifecycleLivedataKtx = "2.6.1"
 lifecycleViewmodelKtx = "2.6.1"
 materialVersion = "1.8.0"
 okhttp = "4.9.3"
+picasso = "2.8"
 retrofit = "2.9.0"
 viewpager2 = "1.0.0"
 volley = "1.2.1"
@@ -28,6 +31,7 @@ supportAnnotations = "28.0.0"
 drawerlayout = "1.2.0"
 
 [libraries]
+codesgood-justifiedtextview = { module = "com.codesgood:justifiedtextview", version.ref = "justifiedtextviewVersion" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
 dotsindicator = { module = "com.tbuonomo:dotsindicator", version.ref = "dotsindicator" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
@@ -38,6 +42,7 @@ junit = { group = "junit", name = "junit", version.ref = "junit" }
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+library = { module = "me.biubiubiu.justifytext:library", version.ref = "library" }
 logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "loggingInterceptor" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
@@ -48,6 +53,7 @@ lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-view
 material-v130alpha03 = { module = "com.google.android.material:material", version.ref = "googleMaterialVersion" }
 material-v180 = { module = "com.google.android.material:material", version.ref = "materialVersion" }
 okhttp3-okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
+picasso = { module = "com.squareup.picasso:picasso", version.ref = "picasso" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 viewpager2 = { module = "androidx.viewpager2:viewpager2", version.ref = "viewpager2" }
 volley = { group = "com.android.volley", name = "volley", version.ref = "volley" }

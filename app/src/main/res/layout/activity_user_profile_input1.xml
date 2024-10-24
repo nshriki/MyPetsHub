@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@color/white"
     tools:context=".UserProfileInput1">
 
     <ScrollView
@@ -64,7 +64,7 @@
                     android:layout_width="120dp"
                     android:layout_height="120dp"
                     app:shapeAppearanceOverlay="@style/circular"
-                    android:background="@drawable/imageupload"
+                    android:background="@drawable/user_avatar"
                     android:padding="5dp"
                     app:strokeColor="#CAC9C9"
                     app:strokeWidth="1dp" />
@@ -119,7 +119,6 @@
                         android:textSize="13sp" />
 
                     <EditText
-
                         android:id="@+id/input_user_FName"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
@@ -129,7 +128,7 @@
                         android:fontFamily="@font/montserrat"
                         android:inputType="text|textCapSentences"
                         android:textColor="#474C4C"
-                        android:textSize="17sp" />
+                        android:textSize="14sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -158,7 +157,7 @@
                         android:fontFamily="@font/montserrat"
                         android:inputType="text|textCapSentences"
                         android:textColor="#474C4C"
-                        android:textSize="17sp" />
+                        android:textSize="14sp" />
 
                 </LinearLayout>
 
@@ -188,7 +187,7 @@
                         android:fontFamily="@font/montserrat"
                         android:inputType="text|textCapSentences"
                         android:textColor="#474C4C"
-                        android:textSize="17sp" />
+                        android:textSize="14sp" />
 
                 </LinearLayout>
 
@@ -199,8 +198,9 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
-                        android:layout_width="170dp"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:layout_marginRight="11dp"
                         android:orientation="vertical">
 
@@ -218,18 +218,18 @@
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:layout_marginTop="6dp"
-                            android:background="@drawable/rounded_edittext"
-                            android:drawableRight="@drawable/dropdown_btn"
+                            android:background="@drawable/pet_spinner_bg"
                             android:ems="10"
                             android:fontFamily="@font/montserrat"
                             android:inputType="text"
                             android:textColor="#474C4C"
-                            android:textSize="17sp" />
+                            android:textSize="14sp" />
 
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="170dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
 
@@ -252,7 +252,7 @@
                             android:fontFamily="@font/montserrat"
                             android:inputType="text|textCapSentences"
                             android:textColor="#474C4C"
-                            android:textSize="17sp" />
+                            android:textSize="14sp" />
 
                     </LinearLayout>
 
@@ -265,7 +265,8 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
-                        android:layout_width="170dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
                         android:layout_height="match_parent"
                         android:layout_marginEnd="11dp"
                         android:orientation="vertical">
@@ -285,17 +286,21 @@
                             android:layout_height="40dp"
                             android:layout_marginTop="6dp"
                             android:background="@drawable/rounded_edittext"
+                            android:clickable="true"
                             android:drawableRight="@drawable/datepicker"
+                            android:editable="false"
                             android:ems="10"
+                            android:focusable="false"
                             android:fontFamily="@font/montserrat"
                             android:inputType="text"
                             android:textColor="#474C4C"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="170dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
 
@@ -319,7 +324,7 @@
                             android:fontFamily="@font/montserrat"
                             android:inputType="number|numberSigned"
                             android:textColor="#474C4C"
-                            android:textSize="17sp" />
+                            android:textSize="14sp" />
 
                     </LinearLayout>
                 </LinearLayout>
@@ -347,9 +352,9 @@
                         android:background="@drawable/rounded_edittext"
                         android:ems="10"
                         android:fontFamily="@font/montserrat"
-                        android:inputType="text|textCapSentences|textMultiLine"
+                        android:inputType="text|textCapWords"
                         android:textColor="#474C4C"
-                        android:textSize="17sp" />
+                        android:textSize="14sp" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -403,7 +408,6 @@
                         android:textSize="13sp" />
 
                     <EditText
-
                         android:id="@+id/input_user_Email"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
@@ -413,7 +417,7 @@
                         android:fontFamily="@font/montserrat"
                         android:inputType="text|textEmailAddress|textCapSentences"
                         android:textColor="#474C4C"
-                        android:textSize="17sp" />
+                        android:textSize="14sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -442,7 +446,7 @@
                         android:fontFamily="@font/montserrat"
                         android:inputType="text|textCapSentences"
                         android:textColor="#474C4C"
-                        android:textSize="17sp" />
+                        android:textSize="14sp" />
 
                 </LinearLayout>
 
@@ -508,7 +512,7 @@
                         android:fontFamily="@font/montserrat"
                         android:inputType="text|textCapSentences"
                         android:textColor="#474C4C"
-                        android:textSize="17sp" />
+                        android:textSize="14sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -537,7 +541,7 @@
                         android:fontFamily="@font/montserrat"
                         android:inputType="text|textCapSentences"
                         android:textColor="#474C4C"
-                        android:textSize="17sp" />
+                        android:textSize="14sp" />
 
                 </LinearLayout>
 
@@ -567,7 +571,7 @@
                         android:fontFamily="@font/montserrat"
                         android:inputType="text|textCapSentences"
                         android:textColor="#474C4C"
-                        android:textSize="17sp" />
+                        android:textSize="14sp" />
 
                 </LinearLayout>
 

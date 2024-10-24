@@ -1,5 +1,6 @@
 package com.example.mypetshub;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
@@ -256,9 +257,14 @@ public class PetBoarding extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("MissingSuperCall")
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        Intent intent = new Intent(PetBoarding.this, UserDashboard.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);  // Optional: This clears the top of the stack
+        startActivity(intent);
+        finish();  // Optional: Call finish if you want to close the current activity
     }
+
 
 }

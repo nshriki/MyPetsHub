@@ -1,5 +1,6 @@
 package com.example.mypetshub;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -43,9 +44,13 @@ public class PetAppointments extends AppCompatActivity {
         });
     }
 
+    @SuppressLint("MissingSuperCall")
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        Intent intent = new Intent(PetAppointments.this, UserDashboard.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);  // Optional: This clears the top of the stack
+        startActivity(intent);
+        finish();  // Optional: Call finish if you want to close the current activity
     }
 
 }

@@ -58,8 +58,7 @@
                     android:text="APPOINTMENTS"
                     android:textColor="#005353"
                     android:textColorLink="#0DFFFFFF"
-                    android:textSize="16sp"
-                    android:typeface="normal" />
+                    android:textSize="16sp"/>
 
             </LinearLayout>
 

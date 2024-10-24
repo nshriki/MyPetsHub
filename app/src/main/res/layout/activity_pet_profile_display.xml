@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".PetProfileDisplay">
 
     <ScrollView
@@ -24,100 +25,84 @@
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp" />
+                android:layout_marginTop="20dp" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:id="@+id/Header"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageButton
-                    android:id="@+id/Edit_btn"
-                    android:layout_width="46dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginBottom="2dp"
-                    android:layout_weight="0"
-                    android:backgroundTint="#00FFFFFF"
-                    android:foregroundGravity="center_vertical"
-                    android:textAlignment="center"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="1.0"
-                    app:srcCompat="@drawable/edit_btn" />
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
                 <ImageButton
                     android:id="@+id/Back_btn"
-                    android:layout_width="46dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_gravity="center"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginEnd="271dp"
-                    android:layout_marginBottom="2dp"
+                    android:layout_marginLeft="5dp"
                     android:layout_weight="0"
                     android:backgroundTint="#00FFFFFF"
                     android:foregroundGravity="center_vertical"
                     android:textAlignment="center"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/Edit_btn"
-                    app:layout_constraintHorizontal_bias="0.289"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="1.0"
                     app:srcCompat="@drawable/back_btn_v2" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="18dp"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="115sp"
-                    android:layout_height="115sp"
-                    android:layout_marginBottom="10dp"
-                    android:foregroundGravity="center"
-                    app:srcCompat="@drawable/pet_profile_storage" />
-
-                <TextView
-                    android:id="@+id/petName3_textView"
-                    android:layout_width="match_parent"
+                <Space
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat_extrabold"
-                    android:text="TYLER"
-                    android:textAlignment="center"
-                    android:textSize="30sp" />
+                    android:layout_weight="2" />
 
-                <TextView
-                    android:id="@+id/petBirthday3_textView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat_semibold"
-                    android:text="Dec. 11, 2022"
+                <ImageButton
+                    android:id="@+id/Edit_btnPPD"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="8dp"
+                    android:layout_weight="0"
+                    android:backgroundTint="#00FFFFFF"
+                    android:foregroundGravity="center_vertical"
                     android:textAlignment="center"
-                    android:textSize="14sp" />
+                    app:srcCompat="@drawable/editbtn" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/PetMedicalRecords"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="47dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/pet_ProfileView"
+                    android:layout_width="130sp"
+                    android:layout_height="130sp"
+                    android:layout_marginBottom="10dp"
+                    android:foregroundGravity="center"
+                    app:srcCompat="@drawable/avatar" />
+
+                <TextView
+                    android:id="@+id/pet_Name1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_extrabold"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="#474C4C"
+                    android:textSize="30sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/pet_PersonalInformation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginEnd="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -126,80 +111,126 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat_semibold"
                         android:text="Pet Personal Information"
-                        android:textColor="#D9626767"
+                        android:textColor="#3E3A3A"
                         android:textSize="13sp" />
 
                     <View
                         android:id="@+id/divider4"
                         android:layout_width="match_parent"
-                        android:layout_height="1.3dp"
-                        android:layout_marginTop="6dp"
-                        android:background="?android:attr/listDivider" />
+                        android:layout_height="2dp"
+                        android:layout_marginTop="3dp"
+                        android:background="?android:attr/listDivider"
+                        android:backgroundTint="#3E3A3A" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/petName"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="27dp"
+                    android:layout_marginRight="30dp"
+                    android:foregroundGravity="center"
+                    android:gravity="center"
                     android:orientation="horizontal">
 
                     <LinearLayout
-                        android:id="@+id/petSpecies"
-                        android:layout_width="160dp"
+                        android:layout_width="40dp"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="22dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
                         android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/petSpecies3_textView"
+                        <ImageView
+                            android:id="@+id/imageView3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/montserrat_semibold"
-                            android:text="Species"
-                            android:textColor="#D9474C4C"
-                            android:textSize="15sp" />
-
-                        <TextView
-                            android:id="@+id/petSpecies3_editText"
-                            android:layout_width="match_parent"
-                            android:layout_height="48dp"
-                            android:layout_marginTop="6dp"
-                            android:ems="10"
-                            android:fontFamily="@font/montserrat_semibold"
-                            android:inputType="text"
-                            android:text="Canine"
-                            android:textColor="#474C4C"
-                            android:textSize="17sp"
-                            android:textStyle="bold" />
-
+                            app:srcCompat="@drawable/pet_name" />
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/petSex"
-                        android:layout_width="160dp"
+                        android:id="@+id/petName2"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="22dp"
+                        android:gravity="center"
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/petBreed3_textView"
+                            android:id="@+id/petName2_textView"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/montserrat_semibold"
-                            android:text="Sex"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Name"
                             android:textColor="#D9474C4C"
                             android:textSize="14sp" />
 
                         <TextView
-                            android:id="@+id/petSex3_editText"
+                            android:id="@+id/pet_Name2"
                             android:layout_width="match_parent"
-                            android:layout_height="48dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
+                            android:cursorVisible="false"
                             android:ems="10"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
                             android:fontFamily="@font/montserrat_semibold"
                             android:inputType="text"
-                            android:text="Male"
+                            android:textColor="#474C4C"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/petGender"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginRight="30dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/imageView6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:srcCompat="@drawable/pet_gender" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/userGender2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/petGender2_textView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Gender"
+                            android:textColor="#D9474C4C"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/pet_Gender"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:cursorVisible="false"
+                            android:ems="10"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:fontFamily="@font/montserrat_semibold"
+                            android:inputType="text"
                             android:textColor="#474C4C"
                             android:textSize="17sp"
                             android:textStyle="bold" />
@@ -208,303 +239,662 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/petBreed"
+                    android:id="@+id/petBirthday"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="30dp"
-                    android:orientation="vertical">
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginRight="30dp"
+                    android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/petBreed_textView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat_semibold"
-                        android:text="Breed"
-                        android:textColor="#D9474C4C"
-                        android:textSize="14sp" />
+                    <LinearLayout
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/petBreed3_editText"
+                        <ImageView
+                            android:id="@+id/imageView7"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:srcCompat="@drawable/cake" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/petBirthday2"
                         android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:layout_marginTop="6dp"
-                        android:ems="10"
-                        android:fontFamily="@font/montserrat_semibold"
-                        android:inputType="text"
-                        android:text="Shitzu"
-                        android:textColor="#474C4C"
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/petBirthday2_textView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Birthday"
+                            android:textColor="#D9474C4C"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/pet_Birthday"
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="6dp"
+                            android:cursorVisible="false"
+                            android:ems="10"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:fontFamily="@font/montserrat_semibold"
+                            android:inputType="text"
+                            android:textColor="#474C4C"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/petAge"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginRight="30dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/imageView9"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:srcCompat="@drawable/age" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:id="@+id/petAge2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/petAge2_textView"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/montserrat"
+                                android:text="Age"
+                                android:textColor="#D9474C4C"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:id="@+id/pet_Age"
+                                android:layout_width="match_parent"
+                                android:layout_height="20dp"
+                                android:layout_marginTop="6dp"
+                                android:cursorVisible="false"
+                                android:ems="10"
+                                android:focusable="false"
+                                android:focusableInTouchMode="false"
+                                android:fontFamily="@font/montserrat_semibold"
+                                android:inputType="text"
+                                android:textColor="#474C4C"
+                                android:textSize="17sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/petSpecies"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginRight="30dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/imageView10"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:srcCompat="@drawable/pet_species" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/petNationality2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/petSpecies2_textView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Species"
+                            android:textColor="#D9474C4C"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/pet_Nationality"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:cursorVisible="false"
+                            android:ems="10"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:fontFamily="@font/montserrat_semibold"
+                            android:inputType="text"
+                            android:textColor="#474C4C"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/petWeight3"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="30dp"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginRight="30dp"
+                    android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/petWeight3_textView"
+                    <LinearLayout
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/imageView11"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:srcCompat="@drawable/pet_breed" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/pet_breed2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat_semibold"
-                        android:text="Weight"
-                        android:textColor="#D9474C4C"
-                        android:textSize="15sp" />
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/petWeight3_EditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:layout_marginTop="6dp"
-                        android:ems="10"
-                        android:fontFamily="@font/montserrat_semibold"
-                        android:inputType="text"
-                        android:text="10 kg"
-                        android:textColor="#474C4C"
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/petBreed2_textView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Breed"
+                            android:textColor="#D9474C4C"
+                            android:textSize="13sp" />
 
+                        <TextView
+                            android:id="@+id/pet_Breed"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:cursorVisible="false"
+                            android:ems="10"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:fontFamily="@font/montserrat_semibold"
+                            android:inputType="text|textMultiLine"
+                            android:textColor="#474C4C"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
                 </LinearLayout>
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/ButtonLayout"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginRight="30dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/imageView_petWeight"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:srcCompat="@drawable/pet_weight" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/pet_weight2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/petWeight2_textView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Weight"
+                            android:textColor="#D9474C4C"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/pet_Weight"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:cursorVisible="false"
+                            android:ems="10"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:fontFamily="@font/montserrat_semibold"
+                            android:inputType="text"
+                            android:textColor="#474C4C"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/PetMedicalRecords3"
+                android:id="@+id/pet_MedicalInformation"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="47dp"
-                android:layout_marginBottom="35dp"
-                android:orientation="vertical">
+                android:layout_marginTop="50dp"
+                android:orientation="vertical"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginEnd="30dp"
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/petMedicalRecords3_textView"
+                        android:id="@+id/textView17"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat_semibold"
                         android:text="Pet Medical Information"
-                        android:textColor="#D9626767"
+                        android:textColor="#3E3A3A"
                         android:textSize="13sp" />
 
                     <View
-                        android:id="@+id/petMedicalRecords3_divider"
+                        android:id="@+id/divider5"
                         android:layout_width="match_parent"
-                        android:layout_height="1.3dp"
-                        android:layout_marginTop="6dp"
-                        android:background="?android:attr/listDivider" />
-                </LinearLayout>
+                        android:layout_height="2dp"
+                        android:layout_marginTop="3dp"
+                        android:background="?android:attr/listDivider"
+                        android:backgroundTint="#3E3A3A" />
 
-                <LinearLayout
-                    android:id="@+id/petVetClinic3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="30dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/petVetClinic3_textView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat_semibold"
-                        android:text="Veterinary Clinic"
-                        android:textColor="#D9474C4C"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:id="@+id/petVetClinic3_editText"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:layout_marginTop="6dp"
-                        android:ems="10"
-                        android:fontFamily="@font/montserrat_semibold"
-                        android:inputType="text"
-                        android:text="na"
-                        android:textColor="#474C4C"
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/petVetDoc3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="30dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/petVetDoc3_textView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat_semibold"
-                        android:text="Veterinary Doctor"
-                        android:textColor="#D9474C4C"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:id="@+id/petVetDoc3_EditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:layout_marginTop="6dp"
-                        android:ems="10"
-                        android:fontFamily="@font/montserrat_semibold"
-                        android:inputType="text"
-                        android:text="na"
-                        android:textColor="#474C4C"
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/petAllergies3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="30dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/petAllergies3_textView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat_semibold"
-                        android:text="Allergies"
-                        android:textColor="#D9474C4C"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:id="@+id/petAllergies3_EditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:layout_marginTop="6dp"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:fontFamily="@font/montserrat_semibold"
-                        android:inputType="text"
-                        android:text="na"
-                        android:textColor="#474C4C"
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/petCon3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="30dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/petCon3_textView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat_semibold"
-                        android:text="Pre-existing Conditions"
-                        android:textColor="#D9474C4C"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:id="@+id/petcon3_EditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:layout_marginTop="6dp"
-                        android:ems="10"
-                        android:fontFamily="@font/montserrat_semibold"
-                        android:inputType="text"
-                        android:text="na"
-                        android:textColor="#474C4C"
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/petVaccines3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="30dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/petVaccines3_textView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat_semibold"
-                        android:text="Vaccines"
-                        android:textColor="#D9474C4C"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:id="@+id/petVaccines3_EditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:layout_marginTop="6dp"
-                        android:ems="10"
-                        android:fontFamily="@font/montserrat_semibold"
-                        android:inputType="text"
-                        android:textColor="#474C4C"
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/petVacCards3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="30dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/petVacCards3_textView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat_semibold"
-                        android:text="Vaccine Cards"
-                        android:textColor="#D9474C4C"
-                        android:textSize="14sp" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerView"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="6dp"
-                        android:background="@drawable/rounded_confirmation_edittext"
-                        android:padding="15dp" />
+                        android:orientation="vertical">
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/pet_vet_clinic"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="17dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/imageView12"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:srcCompat="@drawable/pet_vet_clinic" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/pet_vet_clinic1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/pet_clinic2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Veterinary Clinic"
+                            android:textColor="#D9474C4C"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/pet_Vet_Clinic_txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:cursorVisible="false"
+                            android:ems="10"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:fontFamily="@font/montserrat_semibold"
+                            android:inputType="text"
+                            android:textColor="#474C4C"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/petVetDocotor"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="18dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/imageView13"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:srcCompat="@drawable/pet_vet_doctor" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/petVetDoctor2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/petDoc1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Veterinary Doctor"
+                            android:textColor="#D9474C4C"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/pet_VetDoctor"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:cursorVisible="false"
+                            android:ems="10"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:fontFamily="@font/montserrat_semibold"
+                            android:inputType="text"
+                            android:textColor="#474C4C"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/petAllergies"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="18dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/imageView14"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:srcCompat="@drawable/pet_allergies" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/petAllergies2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/petAllergies1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Allergies"
+                            android:textColor="#D9474C4C"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/pet_Allergies"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:cursorVisible="false"
+                            android:ems="10"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:fontFamily="@font/montserrat_semibold"
+                            android:inputType="text"
+                            android:textColor="#474C4C"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/petPEConditions"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="18dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/imageView15"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:srcCompat="@drawable/pet_conditions" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/petPEConditions2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/petConditions1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Pre-existing Conditions"
+                            android:textColor="#D9474C4C"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/pet_PE_Conditions"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:cursorVisible="false"
+                            android:ems="10"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:fontFamily="@font/montserrat_semibold"
+                            android:inputType="text"
+                            android:textColor="#474C4C"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/petVaccines"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="18dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/imageView16"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:srcCompat="@drawable/pet_vaccines" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/petVaccines2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/petVax1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Vaccines"
+                            android:textColor="#D9474C4C"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/pet_Vaccines"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:cursorVisible="false"
+                            android:ems="10"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:fontFamily="@font/montserrat_semibold"
+                            android:inputType="text"
+                            android:textColor="#474C4C"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/petVaxCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginBottom="50dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/imageView17"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:srcCompat="@drawable/pet_vax_card" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/petVaxCard2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/petVaxCard1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Vaccine Card"
+                            android:textColor="#D9474C4C"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:id="@+id/pet_Vax_Card_imageView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
             </LinearLayout>
+
+
 
         </LinearLayout>
 

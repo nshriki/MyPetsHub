@@ -88,6 +88,10 @@ public class UserProfile extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        Intent intent = new Intent(UserProfile.this, UserDashboard.class);
+        startActivity(intent);
+        finish();  // Optional: Call finish if you want to close the current activity
+
         super.onBackPressed();
     }
 

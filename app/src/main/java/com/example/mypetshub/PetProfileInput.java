@@ -183,7 +183,7 @@ public class PetProfileInput extends AppCompatActivity {
 
     private static final int PICK_IMAGE = 1;
 
-    private EditText input_pet_Name, input_pet_weight, input_pet_Breed, input_pet_Birthday,
+    private EditText input_pet_Name, input_pet_weight, input_pet_Breed, input_pet_Birthday, input_pet_Age,
             input_pet_Allergies, input_pet_PreExistConditions, input_pet_VeterinaryClinic,
             input_pet_VeterinaryDoctor, input_pet_OtherVaccine2;
     private CheckBox input_pet_RabbiesVaccine, input_pet_FiveinOneVaccine;
@@ -217,7 +217,7 @@ public class PetProfileInput extends AppCompatActivity {
 
         backBtnUPI1 = findViewById(R.id.backBtnUPI1);
         backBtnUPI1.setOnClickListener(view -> {
-            Intent backBtnPPI_Intent = new Intent(PetProfileInput.this, UserDashboard.class);
+            Intent backBtnPPI_Intent = new Intent(PetProfileInput.this, PetProfile.class);
             startActivity(backBtnPPI_Intent);
         });
 
@@ -241,6 +241,7 @@ public class PetProfileInput extends AppCompatActivity {
         input_pet_Species = findViewById(R.id.input_pet_Species);
         input_pet_Breed = findViewById(R.id.input_pet_Breed);
         input_pet_Birthday = findViewById(R.id.input_pet_Birthday);
+        input_pet_Age = findViewById(R.id.input_pet_Age);
         input_pet_Allergies = findViewById(R.id.input_pet_Allergies);
         input_pet_PreExistConditions = findViewById(R.id.input_pet_PreExistConditions);
         input_pet_VeterinaryClinic = findViewById(R.id.input_pet_VeterinaryClinic);
@@ -254,6 +255,9 @@ public class PetProfileInput extends AppCompatActivity {
 
         input_pet_Gender = findViewById(R.id.input_pet_Gender);
         input_pet_Species = findViewById(R.id.input_pet_Species);
+
+        // Age - EditText
+        setFieldsNonEditable();
 
         // Set up Gender Spinner
         ArrayAdapter<CharSequence> genderAdapter = ArrayAdapter.createFromResource(
@@ -269,6 +273,10 @@ public class PetProfileInput extends AppCompatActivity {
 
         // Initialize OkHttpClient
         client = new OkHttpClient();
+    }
+
+    private void setFieldsNonEditable() {
+        input_pet_Age.setFocusable(false);
     }
 
     private void pickImage(int requestCode) {
@@ -291,7 +299,7 @@ public class PetProfileInput extends AppCompatActivity {
         }
     }
 
-    private void showDatePickerDialog(EditText editText) {
+    private void showDatePickerDialog(EditText birthdayEditText) {
         Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH);
@@ -308,13 +316,32 @@ public class PetProfileInput extends AppCompatActivity {
                     SimpleDateFormat dateFormat = new SimpleDateFormat("MMM. dd, yyyy", Locale.getDefault());
                     String formattedDate = dateFormat.format(selectedCalendar.getTime());
 
-                    // Set the formatted date to the EditText
-                    editText.setText(formattedDate);
+                    // Set the formatted date to the birthday EditText
+                    birthdayEditText.setText(formattedDate);
+
+                    // Calculate age
+                    int age = calculateAge(selectedCalendar);
+                    input_pet_Age.setText(String.valueOf(age)); // Set the age to the age EditText
                 },
                 year, month, day
         );
         datePickerDialog.show();
     }
+
+    // Helper method to calculate age based on the selected birth date
+    private int calculateAge(Calendar birthDate) {
+        Calendar today = Calendar.getInstance();
+
+        int age = today.get(Calendar.YEAR) - birthDate.get(Calendar.YEAR);
+
+        // Check if the birthday hasn't occurred yet this year
+        if (today.get(Calendar.DAY_OF_YEAR) < birthDate.get(Calendar.DAY_OF_YEAR)) {
+            age--;
+        }
+
+        return age;
+    }
+
 
     private void addNewPetProfile() {
         // Ensure all fields are filled out
@@ -329,21 +356,25 @@ public class PetProfileInput extends AppCompatActivity {
         }
 
         // Collect all input data
-        String petName = input_pet_Name.getText().toString();
+        String petName = input_pet_Name.getText().toString().trim();
         String petGender = (input_pet_Gender.getSelectedItem() != null)
                 ? input_pet_Gender.getSelectedItem().toString()
                 : "Not specified"; // Handle null case
-        String petWeight = input_pet_weight.getText().toString();
+        String petWeight = input_pet_weight.getText().toString().trim();
         String petSpecies = (input_pet_Species.getSelectedItem() != null)
                 ? input_pet_Species.getSelectedItem().toString()
                 : "Not specified"; // Handle null case
-        String petBreed = input_pet_Breed.getText().toString();
+        String petBreed = input_pet_Breed.getText().toString().trim();
+
         String petBirthday = input_pet_Birthday.getText().toString();
-        String petAllergies = input_pet_Allergies.getText().toString();
-        String petPreExistConditions = input_pet_PreExistConditions.getText().toString();
-        String petVetClinic = input_pet_VeterinaryClinic.getText().toString();
-        String petVetDoctor = input_pet_VeterinaryDoctor.getText().toString();
-        String otherVaccines = input_pet_OtherVaccine2.getText().toString();
+        String petBirthdayMySQLFormat = convertDateToMySQLFormat(petBirthday);
+
+        String petAge = input_pet_Age.getText().toString().trim();
+        String petAllergies = input_pet_Allergies.getText().toString().trim();
+        String petPreExistConditions = input_pet_PreExistConditions.getText().toString().trim();
+        String petVetClinic = input_pet_VeterinaryClinic.getText().toString().trim();
+        String petVetDoctor = input_pet_VeterinaryDoctor.getText().toString().trim();
+        String otherVaccines = input_pet_OtherVaccine2.getText().toString().trim();
         boolean rabbiesVaccine = input_pet_RabbiesVaccine.isChecked();
         boolean fiveInOneVaccine = input_pet_FiveinOneVaccine.isChecked();
 
@@ -352,9 +383,10 @@ public class PetProfileInput extends AppCompatActivity {
         builder.addFormDataPart("user_id", String.valueOf(userId));
         builder.addFormDataPart("pet_name", petName);
         builder.addFormDataPart("sex", petGender);
+        builder.addFormDataPart("pet_age", petAge);
         builder.addFormDataPart("species", petSpecies);
         builder.addFormDataPart("breed", petBreed);
-        builder.addFormDataPart("birthday", petBirthday);
+        builder.addFormDataPart("birthday", petBirthdayMySQLFormat);
         builder.addFormDataPart("weight", petWeight);
         builder.addFormDataPart("allergies", petAllergies);
         builder.addFormDataPart("pre_existing_condition", petPreExistConditions);
@@ -400,11 +432,26 @@ public class PetProfileInput extends AppCompatActivity {
 
                 if (response.isSuccessful()) {
                     runOnUiThread(() -> Toast.makeText(PetProfileInput.this, "Pet profile added successfully!", Toast.LENGTH_SHORT).show());
+                    Intent intent = new Intent(PetProfileInput.this, PetProfile.class);
+                    startActivity(intent);
                 } else {
                     runOnUiThread(() -> Toast.makeText(PetProfileInput.this, "Failed to add pet profile. Please try again.", Toast.LENGTH_SHORT).show());
                 }
             }
         });
+    }
+
+    private String convertDateToMySQLFormat(String petBirthday) {
+        SimpleDateFormat displayFormat = new SimpleDateFormat("MMM. dd, yyyy", Locale.getDefault());
+        SimpleDateFormat dbFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+
+        try {
+            // Parse the date in the displayed format
+            return dbFormat.format(displayFormat.parse(petBirthday));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ""; // Return empty string in case of error
+        }
     }
 
     // Helper method to get file path from URI

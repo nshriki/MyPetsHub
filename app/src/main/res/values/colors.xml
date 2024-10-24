@@ -24,6 +24,8 @@
     <color name="dialog_color_2">#385796</color>
     <color name="dialog_color_3">#006F6F</color>
 
+    <color name="cc_black">#CC000000</color>
+
 
 <!--    <color name="button_top_color">#BD006F6F</color>-->
 <!--    <color name="button_bottom_color">#FF004E4E</color>-->

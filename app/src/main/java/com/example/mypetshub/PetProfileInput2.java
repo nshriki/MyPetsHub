@@ -162,7 +162,7 @@ public class PetProfileInput2 extends AppCompatActivity {
                         Toast.makeText(PetProfileInput2.this, "Pet saved successfully!", Toast.LENGTH_SHORT).show();
 
                         // Redirect to EditUserProfile and pass the data
-                        Intent intent = new Intent(PetProfileInput2.this, PetProfileDisplay.class);
+//                        Intent intent = new Intent(PetProfileInput2.this, PetProfileDisplay.class);
                     });
                 } else {
                     runOnUiThread(() -> Toast.makeText(PetProfileInput2.this, "Failed to save data: " + response.message(), Toast.LENGTH_SHORT).show());

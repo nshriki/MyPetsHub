@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="#3E3A3A"
+    android:background="@color/white"
     tools:context=".UserProfileDisplay1">
 
     <ScrollView
@@ -85,6 +85,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat_extrabold"
                     android:textAlignment="center"
+                    android:textAllCaps="true"
                     android:textColor="#474C4C"
                     android:textSize="30sp" />
 
@@ -93,7 +94,7 @@
             <LinearLayout
                 android:id="@+id/user_PersonalInformation"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
                 android:orientation="vertical">
 
@@ -125,7 +126,7 @@
                 <LinearLayout
                     android:id="@+id/userName"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="48dp"
                     android:layout_marginLeft="30dp"
                     android:layout_marginTop="27dp"
                     android:layout_marginRight="30dp"
@@ -175,7 +176,7 @@
                             android:fontFamily="@font/montserrat_semibold"
                             android:inputType="text"
                             android:textColor="#474C4C"
-                            android:textSize="17sp"
+                            android:textSize="16sp"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -184,7 +185,7 @@
                 <LinearLayout
                     android:id="@+id/userNickname"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="30dp"
                     android:layout_marginTop="18dp"
                     android:layout_marginRight="30dp"
@@ -240,7 +241,7 @@
                 <LinearLayout
                     android:id="@+id/userGender"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="30dp"
                     android:layout_marginTop="18dp"
                     android:layout_marginRight="30dp"
@@ -296,7 +297,7 @@
                 <LinearLayout
                     android:id="@+id/userBirthday"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="30dp"
                     android:layout_marginTop="18dp"
                     android:layout_marginRight="30dp"
@@ -352,7 +353,7 @@
                 <LinearLayout
                     android:id="@+id/userAge"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="30dp"
                     android:layout_marginTop="18dp"
                     android:layout_marginRight="30dp"
@@ -414,7 +415,7 @@
                 <LinearLayout
                     android:id="@+id/userNationality"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="30dp"
                     android:layout_marginTop="18dp"
                     android:layout_marginRight="30dp"
@@ -493,7 +494,7 @@
                     <LinearLayout
                         android:id="@+id/userAddress2"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:orientation="vertical">
 
                         <TextView
@@ -506,7 +507,7 @@
                             android:textSize="13sp" />
 
                         <TextView
-                            android:id="@+id/userAddress2_editText"
+                            android:id="@+id/user_Address"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
@@ -515,7 +516,7 @@
                             android:focusable="false"
                             android:focusableInTouchMode="false"
                             android:fontFamily="@font/montserrat_semibold"
-                            android:inputType="text"
+                            android:inputType="text|textMultiLine"
                             android:textColor="#474C4C"
                             android:textSize="17sp"
                             android:textStyle="bold" />
@@ -588,7 +589,7 @@
                     <LinearLayout
                         android:id="@+id/userEmail1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:gravity="center"
                         android:orientation="vertical">
 
@@ -613,7 +614,7 @@
                             android:fontFamily="@font/montserrat_semibold"
                             android:inputType="text"
                             android:textColor="#474C4C"
-                            android:textSize="17sp"
+                            android:textSize="16sp"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -623,7 +624,7 @@
                 <LinearLayout
                     android:id="@+id/userContactNumber"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="18dp"
                     android:orientation="horizontal">
 
@@ -669,7 +670,7 @@
                             android:fontFamily="@font/montserrat_semibold"
                             android:inputType="text"
                             android:textColor="#474C4C"
-                            android:textSize="17sp"
+                            android:textSize="16sp"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -720,7 +721,7 @@
                 <LinearLayout
                     android:id="@+id/ec_Name"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="17dp"
                     android:orientation="horizontal">
 
@@ -766,7 +767,7 @@
                             android:fontFamily="@font/montserrat_semibold"
                             android:inputType="text"
                             android:textColor="#474C4C"
-                            android:textSize="17sp"
+                            android:textSize="16sp"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -776,7 +777,7 @@
                 <LinearLayout
                     android:id="@+id/ec_Relationship"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="18dp"
                     android:orientation="horizontal">
 
@@ -822,7 +823,7 @@
                             android:fontFamily="@font/montserrat_semibold"
                             android:inputType="text"
                             android:textColor="#474C4C"
-                            android:textSize="17sp"
+                            android:textSize="16sp"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -832,7 +833,7 @@
                 <LinearLayout
                     android:id="@+id/ec_ContactNumber"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="18dp"
                     android:orientation="horizontal">
 
@@ -878,7 +879,7 @@
                             android:fontFamily="@font/montserrat_semibold"
                             android:inputType="text"
                             android:textColor="#474C4C"
-                            android:textSize="17sp"
+                            android:textSize="16sp"
                             android:textStyle="bold" />
 
                     </LinearLayout>

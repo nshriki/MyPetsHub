@@ -1,24 +1,3 @@
-<!--<resources>-->
-<!--    <string name="app_name">MyPetsHub</string>-->
-<!--    <string name="title_activity_login">LoginActivity</string>-->
-<!--    <string name="prompt_email">Email</string>-->
-<!--    <string name="prompt_password">Password</string>-->
-<!--    <string name="action_sign_in">Sign in or register</string>-->
-<!--    <string name="action_sign_in_short">Sign in</string>-->
-<!--    <string name="welcome">"Welcome !"</string>-->
-<!--    <string name="invalid_username">Not a valid username</string>-->
-<!--    <string name="invalid_password">Password must be >5 characters</string>-->
-<!--    <string name="login_failed">"Login failed"</string>-->
-<!--    <string name="pet_services">Hamugaway is your pet’s trusted haven, \noffering personalized care and a loving \nenvironment. Our services include \n<b>boarding</b>, <b>daycare</b>, and <b>pet sitting</b>.</string>-->
-<!--    <string name="pet_services2">With a dedicated team and a \ncommitment to excellence, we ensure \nyour furry friend feels right at home.</string>-->
-<!--    <string name="leavereview"><u>Leave a review</u></string>-->
-<!--    <string name="signup"><u>Sign Up</u></string>-->
-<!--    <string name="signin"><u>Sign In</u></string>-->
-<!--    <string name="addpettxt">Keep Track Of \nYour Pet Details</string>-->
-<!--    <string name="feedbacktxt">Want to leave \nus a feedback</string>-->
-<!--</resources>-->
-
-
 <resources>
     <string name="app_name">MyPetsHub</string>
     <string name="title_activity_login">LoginActivity</string>
@@ -76,4 +55,21 @@
     <string name="nav_app_name">Bottom Navigation</string>
 
     <string name="click_here"><u>Click Here</u></string>
+    <string name="terms_condi_header">TERMS &amp; CONDITIONS</string>
+    <string name="tc_1">By booking in Hamugaway Pets Boarding and Daycare, you agree to these terms and conditions.</string>
+    <string name="tc_2">We reserve the right to refuse if a pet appears to be sick, injured, or if its behavior may endanger others.</string>
+    <string name="tc_3">We are not responsible for any personal items left with your pet.</string>
+    <string name="tc_4a"><b>Illness or Injury:</b> If a pet becomes ill or is injured, we may provide necessary medical care at our discretion and will notify the owner.</string>
+    <string name="tc_4b"><b>Pre-existing Conditions:</b> If your pet has a pre-existing condition that is aggravated by their stay, we will notify you and may seek veterinary care at our discretion.</string>
+    <string name="tc_4c"><b>Medical Expenses:</b> You are responsible for any medical expenses incurred due to your pet\'s illness or injury.</string>
+    <string name="tc_4d"><b>Updated Information:</b> We require that pets have updated vaccines. We need the owners to declare their pet\'s medical history, the type of diet and other details that we may deem necessary for the booking to be confirmed.</string>
+    <string name="tc_5a"><b>Food and Supplies:</b> You are responsible for providing food, vitamins, and other essentials for your pet.</string>
+    <string name="tc_5b"><b>Socialization:</b> Your pet may interact with other pets during their stay unless you specify otherwise.</string>
+    <string name="tc_6">If your dog bites another pet or a staff member, you agree to cover all medical expenses and related costs.</string>
+    <string name="tc_7">The owner agrees and grant us the permission to take photos of the pet and publish them on social media.</string>
+    <string name="tc_8">Check-in time is 10AM. If you need to check-in at an earlier time, you may advise us for schedule plotting. Add-on fee of Php 50/hour will be charged for check-ins before 10AM. Check-out time is 2PM. Failure to pickup the pet at checkout time will incur Php 50/pet/hour or the Day Care rate, whichever is lower.</string>
+    <string name="tc_9">Hamugaway Pet Boarding and Daycare provides services \"as is\" without warranties of any kind.</string>
+    
+    <string name="tc_8_title">8. Check-in &amp; Check-out </string>
+
 </resources>
