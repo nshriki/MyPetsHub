@@ -4,28 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="30dp">
+    android:layout_margin="6dp">
 
     <ImageView
         android:id="@+id/imgPet"
-        android:layout_width="115dp"
-        android:layout_height="115dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/pet_profile_storage" />
+        tools:srcCompat="@drawable/avatar" />
 
     <TextView
         android:id="@+id/txtPetName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:fontFamily="@font/montserrat_bold"
         android:text="Pet Name"
         android:textAlignment="center"
         android:textColor="#474C4C"
-        android:textSize="18sp"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imgPet" />

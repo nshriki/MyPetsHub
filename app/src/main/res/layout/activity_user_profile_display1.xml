@@ -176,7 +176,7 @@
                             android:fontFamily="@font/montserrat_semibold"
                             android:inputType="text"
                             android:textColor="#474C4C"
-                            android:textSize="16sp"
+                            android:textSize="17sp"
                             android:textStyle="bold" />
 
                     </LinearLayout>

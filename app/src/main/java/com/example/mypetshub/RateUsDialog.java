@@ -95,6 +95,7 @@ package com.example.mypetshub;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -198,6 +199,16 @@ public class RateUsDialog extends Dialog {
 
     // Method to submit the feedback to the server
     private void submitFeedback(final float rating, final String comment) {
+        // Get the user ID from SharedPreferences
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        final int userId = sharedPreferences.getInt("id", -1);  // Default is -1 if not found
+
+        // Check if userId is valid
+        if (userId == -1) {
+            Toast.makeText(getContext(), "User not logged in.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         RequestQueue queue = Volley.newRequestQueue(getContext());
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, feedbackUrl,
@@ -219,7 +230,8 @@ public class RateUsDialog extends Dialog {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
-                params.put("rating", String.valueOf(rating));  // Send the rating
+                params.put("user_id", String.valueOf(userId));  // Send the user ID
+                params.put("rating", String.valueOf(rating));  // Send the rating as a float (converted to string)
                 params.put("comment", comment);  // Send the comment
                 return params;
             }
@@ -228,4 +240,5 @@ public class RateUsDialog extends Dialog {
         // Add the request to the RequestQueue.
         queue.add(stringRequest);
     }
+
 }

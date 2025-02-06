@@ -104,10 +104,11 @@ public class PetProfile extends AppCompatActivity {
                             JSONObject petObject = jsonArray.getJSONObject(i);
 
                             int petId = petObject.getInt("pet_id");
+                            int userId = petObject.getInt("user_id");
                             String petName = petObject.getString("pet_name");
                             String petImage = petObject.getString("pet_image");
 
-                            Pet pet = new Pet(petId, petName, petImage);
+                            Pet pet = new Pet(petId, userId, petName, petImage);
                             petList.add(pet);
                         }
 

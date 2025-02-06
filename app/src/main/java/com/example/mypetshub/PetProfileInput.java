@@ -186,7 +186,7 @@ public class PetProfileInput extends AppCompatActivity {
     private EditText input_pet_Name, input_pet_weight, input_pet_Breed, input_pet_Birthday, input_pet_Age,
             input_pet_Allergies, input_pet_PreExistConditions, input_pet_VeterinaryClinic,
             input_pet_VeterinaryDoctor, input_pet_OtherVaccine2;
-    private CheckBox input_pet_RabbiesVaccine, input_pet_FiveinOneVaccine;
+    private CheckBox input_pet_RabbiesVaccine, input_pet_FiveinOneVaccine, input_pet_OtherVaccine1;
     private ImageButton confirmBtn, backBtnUPI1;
     private Spinner input_pet_Gender, input_pet_Species;
     private int userId;
@@ -232,6 +232,10 @@ public class PetProfileInput extends AppCompatActivity {
 
         // Set click listener for vaccine card image
         vaccineCardImageView.setOnClickListener(v -> pickImage(PICK_IMAGE + 1));
+
+        input_pet_OtherVaccine1.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            input_pet_OtherVaccine2.setEnabled(isChecked);
+        });
     }
 
     private void initializeFields() {
@@ -248,6 +252,7 @@ public class PetProfileInput extends AppCompatActivity {
         input_pet_VeterinaryDoctor = findViewById(R.id.input_pet_VeterinaryDoctor);
         input_pet_RabbiesVaccine = findViewById(R.id.input_pet_RabbiesVaccine);
         input_pet_FiveinOneVaccine = findViewById(R.id.input_pet_FiveinOneVaccine);
+        input_pet_OtherVaccine1 = findViewById(R.id.input_pet_OtherVaccine1);
         input_pet_OtherVaccine2 = findViewById(R.id.input_pet_OtherVaccine2);
         confirmBtn = findViewById(R.id.confirmBtn);
         input_pet_ProfileView = findViewById(R.id.input_pet_ProfileView);

@@ -576,7 +576,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="36dp"
                         android:fontFamily="@font/montserrat_medium"
-                        android:text="5 in 1 Vaccine"
+                        android:text="5-in-1 Vaccine"
                         android:textColor="#474C4C"
                         android:textSize="15sp" />
 
@@ -602,6 +602,7 @@
                             android:layout_weight="1"
                             android:background="@drawable/rounded_edittext"
                             android:ems="10"
+                            android:enabled="false"
                             android:fontFamily="@font/montserrat"
                             android:inputType="text|textCapSentences"
                             android:textSize="14sp"/>

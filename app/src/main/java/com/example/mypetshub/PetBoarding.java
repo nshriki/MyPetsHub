@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -31,11 +33,12 @@ import java.util.Locale;
 
 public class PetBoarding extends AppCompatActivity {
 
-    private EditText checkInDate, checkInTime, checkOutDate, checkOutTime;
+    private EditText checkInDate, checkInTime, checkOutDate, checkOutTime, specialInstruction;
     private TextView smallTxt, mediumTxt, largeTxt, xlargeTxt, catsTxt;
     private Spinner spinnerChoosePet;
     private ArrayList<String> petNames = new ArrayList<>();
     private ImageButton btnContinueBoarding, Back_btn_boarding;
+    private String selectedServiceType = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,16 +51,17 @@ public class PetBoarding extends AppCompatActivity {
             return insets;
         });
 
-        ImageButton btnContinueBoarding = findViewById(R.id.btnContinueBoarding);
-        btnContinueBoarding.setOnClickListener(v -> {
-            Intent intent = new Intent(PetBoarding.this, PetBoardingConfirmation.class);
-            startActivity(intent);
-        });
+        btnContinueBoarding = findViewById(R.id.btnContinueBoarding);
+        btnContinueBoarding.setOnClickListener(v -> handleContinueButton()
+//            Intent intent = new Intent(PetBoarding.this, PetBoardingConfirmation.class);
+//            startActivity(intent);
+        );
 
         checkInDate = findViewById(R.id.editTextText1);
         checkInTime = findViewById(R.id.editTextText3);
         checkOutDate = findViewById(R.id.editTextText2);
         checkOutTime = findViewById(R.id.editTextText4);
+        specialInstruction = findViewById(R.id.editTextTextMultiLine2);
 
         checkInDate.setOnClickListener(v -> showDatePickerDialog(checkInDate));
         checkInTime.setOnClickListener(v -> showTimePickerDialog(checkInTime));
@@ -76,11 +80,18 @@ public class PetBoarding extends AppCompatActivity {
         fetchPetNames(); // Fetch pet names from the server
 
         // Set OnClickListeners for service type layout
-        findViewById(R.id.smallService).setOnClickListener(v -> selectServiceType((LinearLayout) v));
-        findViewById(R.id.mediumService).setOnClickListener(v -> selectServiceType((LinearLayout) v));
-        findViewById(R.id.largeService).setOnClickListener(v -> selectServiceType((LinearLayout) v));
-        findViewById(R.id.xlargeService).setOnClickListener(v -> selectServiceType((LinearLayout) v));
-        findViewById(R.id.catsService).setOnClickListener(v -> selectServiceType((LinearLayout) v));
+//        findViewById(R.id.smallService).setOnClickListener(v -> selectServiceType((LinearLayout) v));
+//        findViewById(R.id.mediumService).setOnClickListener(v -> selectServiceType((LinearLayout) v));
+//        findViewById(R.id.largeService).setOnClickListener(v -> selectServiceType((LinearLayout) v));
+//        findViewById(R.id.xlargeService).setOnClickListener(v -> selectServiceType((LinearLayout) v));
+//        findViewById(R.id.catsService).setOnClickListener(v -> selectServiceType((LinearLayout) v));
+
+        findViewById(R.id.smallService).setOnClickListener(v -> selectServiceType("small"));
+        findViewById(R.id.mediumService).setOnClickListener(v -> selectServiceType("medium"));
+        findViewById(R.id.largeService).setOnClickListener(v -> selectServiceType("large"));
+        findViewById(R.id.xlargeService).setOnClickListener(v -> selectServiceType("x-large"));
+        findViewById(R.id.catsService).setOnClickListener(v -> selectServiceType("cats"));
+
 
         // Set OnItemSelectedListener for spinner
         spinnerChoosePet.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -128,57 +139,128 @@ public class PetBoarding extends AppCompatActivity {
         String checkOutString = checkOutDate.getText().toString();
         String timeInString = checkInTime.getText().toString();
         String timeOutString = checkOutTime.getText().toString();
+        String specialInstructionString = specialInstruction.getText().toString();
+        String selectedPet = spinnerChoosePet.getSelectedItem() != null ? spinnerChoosePet.getSelectedItem().toString() : "";
 
-        // Validate inputs with specific error messages
-        if (checkInString.isEmpty()) {
-            checkInDate.setError("Check-in date is required.");
-            return;
-        }
-        if (checkOutString.isEmpty()) {
-            checkOutDate.setError("Check-out date is required.");
-            return;
-        }
-        if (timeInString.isEmpty()) {
-            checkInTime.setError("Check-in time is required.");
-            return;
-        }
-        if (timeOutString.isEmpty()) {
-            checkOutTime.setError("Check-out time is required.");
+        if (selectedServiceType.isEmpty() || selectedPet.isEmpty() || checkInString.isEmpty() || checkOutString.isEmpty()
+                || timeInString.isEmpty() || timeOutString.isEmpty()) {
+            Toast.makeText(this, "All fields are required except special instructions.", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        btnContinueBoarding.setEnabled(false);
-        saveBoarding(checkInString, checkOutString, timeInString, timeOutString);
+        Intent intent = new Intent(PetBoarding.this, PetBoardingConfirmation.class);
+        intent.putExtra("SERVICE_TYPE", selectedServiceType);
+        intent.putExtra("PET_NAME", selectedPet);
+        intent.putExtra("CHECK_IN_DATE", checkInString);
+        intent.putExtra("CHECK_OUT_DATE", checkOutString);
+        intent.putExtra("CHECK_IN_TIME", timeInString);
+        intent.putExtra("CHECK_OUT_TIME", timeOutString);
+        intent.putExtra("SPECIAL_INSTRUCTION", specialInstructionString);
 
+
+        startActivity(intent);
     }
 
-    private void saveBoarding(String checkInString, String checkOutString, String timeInString, String timeOutString) {
-    }
+//        private void saveBoarding(String checkInString, String checkOutString, String timeInString, String timeOutString) {
+//    }
 
     private void fetchPetNames() {
-        // Fetch pet names from the server and populate the spinner
-        new Thread(this::run).start();
+
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        int userId = sharedPreferences.getInt("id", -1);
+
+        if (userId == -1) {
+            // Handle case where user_id is not found (user not logged in)
+            Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        // Create the API URL with user ID as a query parameter
+        String apiUrl = "https://hamugaway.scarlet2.io/get_pet_boarding.php?user_id=" + userId;
+
+        new Thread(() -> {
+            try {
+                // Send the HTTP GET request
+                String response = NetworkUtils.getResponseFromUrl(apiUrl);
+
+                // Parse the JSON response
+                JSONArray jsonArray = new JSONArray(response);
+                petNames.clear(); // Clear the existing list to avoid duplicates
+
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject pet = jsonArray.getJSONObject(i);
+                    String petName = pet.getString("pet_name");
+                    petNames.add(petName); // Add the pet name to the list
+                }
+
+                // Update the Spinner on the UI thread
+                runOnUiThread(() -> {
+                    ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.spinner_color_layout, petNames);
+                    adapter.setDropDownViewResource(R.layout.spinner_layout_textview);
+                    spinnerChoosePet.setAdapter(adapter);
+                });
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }).start();
     }
 
-    private void selectServiceType(LinearLayout selectedService) {
-        // Reset all text colors to white
-        resetServiceColors();
 
-        // Change text colors of all TextViews in the selected service to gold
-        for (int i = 0; i < selectedService.getChildCount(); i++) {
-            View child = selectedService.getChildAt(i);
-            if (child instanceof TextView) {
-                ((TextView) child).setTextColor(Color.parseColor("#FFD700")); // gold color
-            }
+//    private void selectServiceType(LinearLayout selectedService) {
+//        // Reset all text colors to white
+//        resetServiceColors();
+//
+//        // Change text colors of all TextViews in the selected service to gold
+//        for (int i = 0; i < selectedService.getChildCount(); i++) {
+//            View child = selectedService.getChildAt(i);
+//            if (child instanceof TextView) {
+//                ((TextView) child).setTextColor(Color.parseColor("#FFD700")); // gold color
+//            }
+//        }
+//    }
+//
+//    private void resetServiceColors() {
+//        resetColorForService(R.id.smalltxt1);
+//        resetColorForService(R.id.mediumtxt1);
+//        resetColorForService(R.id.largetxt1);
+//        resetColorForService(R.id.xlargetxt1);
+//        resetColorForService(R.id.catstxt1);
+//    }
+
+    private void selectServiceType(String serviceType) {
+        selectedServiceType = serviceType;
+        resetServiceColors();
+        int selectedId;
+
+        switch (serviceType) {
+            case "small":
+                selectedId = R.id.smalltxt1;
+                break;
+            case "medium":
+                selectedId = R.id.mediumtxt1;
+                break;
+            case "large":
+                selectedId = R.id.largetxt1;
+                break;
+            case "x-large":
+                selectedId = R.id.xlargetxt1;
+                break;
+            case "cats":
+                selectedId = R.id.catstxt1;
+                break;
+            default:
+                return;
         }
+
+        TextView selectedView = findViewById(selectedId);
+        selectedView.setTextColor(Color.parseColor("#FFD700"));
     }
 
     private void resetServiceColors() {
-        resetColorForService(R.id.smalltxt1);
-        resetColorForService(R.id.mediumtxt1);
-        resetColorForService(R.id.largetxt1);
-        resetColorForService(R.id.xlargetxt1);
-        resetColorForService(R.id.catstxt1);
+        int[] ids = {R.id.smalltxt1, R.id.mediumtxt1, R.id.largetxt1, R.id.xlargetxt1, R.id.catstxt1};
+        for (int id : ids) {
+            TextView textView = findViewById(id);
+            textView.setTextColor(Color.WHITE);
+        }
     }
 
     private void resetColorForService(int serviceId) {

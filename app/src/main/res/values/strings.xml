@@ -72,4 +72,6 @@
     
     <string name="tc_8_title">8. Check-in &amp; Check-out </string>
 
+    <string name="boardingConfirmNote">*there may be changes upon check-in\n(Pet size, Additional Charges).</string>
+
 </resources>

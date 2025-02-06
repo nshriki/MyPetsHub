@@ -367,6 +367,8 @@ import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -392,14 +394,28 @@ import java.util.List;
 import java.util.Locale;
 
 import android.os.AsyncTask;
+import android.widget.Toast;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class UserDashboard extends AppCompatActivity {
+
+    RecyclerView rv;
+    ArrayList<String> dataSource;
+    LinearLayoutManager linearLayoutManager;
+    RecyclerViewAdapterPetDashboard myRvAdapter;
+
+    private static final String TAG = "UserDashboard";
+
+    private ArrayList<String> mNames = new ArrayList<>();
+    private ArrayList<String> mImageUrls = new ArrayList<>();
 
     private RecyclerView recyclerView;
     private SliderAdapter adapter;
@@ -413,11 +429,6 @@ public class UserDashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_dashboard);
 
-        FrameLayout petProfileDashboardFrame = findViewById(R.id.petProfileDashboardFrame);
-        ImageView petProfileDashboardImageView = findViewById(R.id.petProfileDashboardImageView);
-        TextView petNameDashboardText = findViewById(R.id.petNameDashboardText);
-        TextView noPetAddedText = findViewById(R.id.noPetAddedText);
-
         // Check if the user is logged in
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         boolean isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false);
@@ -430,7 +441,7 @@ public class UserDashboard extends AppCompatActivity {
             return;
         }
 
-        fetchPetData(petProfileDashboardFrame, petProfileDashboardImageView, petNameDashboardText, noPetAddedText);
+        fetchPetData();
 
         // For "Welcome, User!" in the dashboard
         String userName = sharedPreferences.getString("usersName", "User");
@@ -532,63 +543,103 @@ public class UserDashboard extends AppCompatActivity {
         });
     }
 
-    private void fetchPetData(FrameLayout petProfileDashboardFrame, ImageView petProfileDashboardImageView, TextView petNameDashboardText, TextView noPetAddedText) {
-        String urlString = "https://hamugaway.scarlet2.io/fetchingpet.php?";
+    // commented on October 10, 2024 11:15 PM
 
-        new AsyncTask<Void, Void, String>() {
-            @Override
-            protected String doInBackground(Void... voids) {
-                try {
-                    URL url = new URL(urlString);
-                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                    connection.setRequestMethod("GET");
-                    connection.connect();
+    private void fetchPetData() {
 
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                    StringBuilder result = new StringBuilder();
-                    String line;
-                    while ((line = reader.readLine()) != null) {
-                        result.append(line);
-                    }
-                    reader.close();
-                    return result.toString();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    return null;
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        int userId = sharedPreferences.getInt("id", -1);
+
+        if (userId == -1) {
+            // Handle case where user_id is not found (user not logged in)
+            Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        String urlString = "https://hamugaway.scarlet2.io/get_pets.php?user_id=" + userId;
+
+        // Moved to ExecutorService for better thread management
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        Handler handler = new Handler(Looper.getMainLooper());
+
+        executor.execute(() -> {
+            try {
+                URL url = new URL(urlString);
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("GET");
+
+                // Set timeouts to avoid long delays in case of slow networks
+                connection.setConnectTimeout(5000); // 5 seconds
+                connection.setReadTimeout(5000); // 5 seconds
+                connection.connect();
+
+                BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                StringBuilder result = new StringBuilder();
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    result.append(line);
                 }
+                reader.close();
+
+                String finalResult = result.toString();
+                handler.post(() -> processPetData(finalResult));
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                handler.post(() -> Toast.makeText(UserDashboard.this, "Failed to fetch pet data", Toast.LENGTH_SHORT).show());
             }
-
-            @Override
-            protected void onPostExecute(String result) {
-                try {
-                    if (result != null) {
-                        JSONArray jsonArray = new JSONArray(result);
-                        if (jsonArray.length() > 0) {
-                            // Pet exists
-                            petProfileDashboardFrame.setVisibility(View.VISIBLE);
-                            noPetAddedText.setVisibility(View.GONE);
-
-                            JSONObject pet = jsonArray.getJSONObject(0);
-                            petNameDashboardText.setText(pet.getString("pet_name"));
-
-                            // Load image using Glide
-                            String imageUrl = pet.getString("pet_image");
-                            Glide.with(UserDashboard.this)
-                                    .load(imageUrl)
-                                    .centerCrop()
-                                    .into(petProfileDashboardImageView);
-                        } else {
-                            // No pet added, show the "No pet added" message
-                            petProfileDashboardFrame.setVisibility(View.GONE);
-                            noPetAddedText.setVisibility(View.VISIBLE);
-                        }
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }.execute();
+        });
     }
+
+    // Separate method for processing the JSON data
+    private void processPetData(String result) {
+        try {
+            JSONArray jsonArray = new JSONArray(result);
+
+            if (jsonArray.length() > 0) {
+                ArrayList<String> petNames = new ArrayList<>();
+                ArrayList<String> petImageUrls = new ArrayList<>();
+
+                // Loop through each pet in the response
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject pet = jsonArray.getJSONObject(i);
+                    String petName = pet.getString("pet_name");
+                    String petImageUrl = pet.getString("pet_image");
+
+                    // Add to lists
+                    petNames.add(petName);
+                    petImageUrls.add(petImageUrl);
+                }
+
+                // Initialize RecyclerView with the pet data
+                initRecyclerView(petNames, petImageUrls);
+            } else {
+                Toast.makeText(UserDashboard.this, "No pets added yet", Toast.LENGTH_SHORT).show();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(UserDashboard.this, "Error processing pet data", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    private void initRecyclerView(ArrayList<String> petNames, ArrayList<String> petImageUrls) {
+        Log.d(TAG, "initRecyclerView: Initializing RecyclerView");
+
+        RecyclerView recyclerView = findViewById(R.id.petDisplay_dashboard);
+        List<Pet2> petList = new ArrayList<>();
+
+        for (int i = 0; i < petNames.size(); i++) {
+            // Assuming petId and userId can be set to default values (e.g., 0 or -1)
+            Pet2 pet = new Pet2(i, -1, petNames.get(i), petImageUrls.get(i));
+            petList.add(pet);
+        }
+
+        PetAdapter2 adapter = new PetAdapter2(this, petList);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+    }
+
 
     private void showDatePickerDialog_checkIn(EditText checkInCalendar) {
 

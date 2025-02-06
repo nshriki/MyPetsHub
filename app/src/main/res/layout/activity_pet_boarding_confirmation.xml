@@ -44,22 +44,22 @@
                     android:backgroundTint="#00FFFFFF"
                     android:foregroundGravity="center_vertical"
                     android:textAlignment="center"
-                    app:srcCompat="@drawable/back_btn" />
+                    app:srcCompat="@drawable/back_btn_v2" />
 
                 <TextView
                     android:id="@+id/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginRight="40dp"
+                    android:layout_marginRight="35dp"
                     android:layout_weight="4"
                     android:fontFamily="@font/montserrat_bold"
                     android:fontFeatureSettings="georgia"
                     android:gravity="center_horizontal|center_vertical"
-                    android:text="CONFIRMATION"
+                    android:text="BOOKING SUMMARY"
                     android:textColor="#005353"
                     android:textColorLink="#0DFFFFFF"
                     android:textSize="16sp"
-                    android:typeface="serif" />
+                    android:typeface="normal" />
 
             </LinearLayout>
 
@@ -69,7 +69,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="30dp"
                 android:layout_weight="0"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/textView4"
@@ -79,7 +79,19 @@
                     android:layout_marginRight="35dp"
                     android:layout_weight="0"
                     android:fontFamily="@font/montserrat_medium"
-                    android:text="make sure to review the details below chuchu make sure to review the details below chuchu"
+                    android:text="Check-in time from 10:00 AM and Check-out time not later than 2:00 PM the last day of booking."
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/textViewReminders"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="35dp"
+                    android:layout_weight="0"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="Early Check-in and Check-out will be charged Php50/pet/hour. Food and other essentials are shouldered by the owner."
                     android:textSize="11sp" />
 
             </LinearLayout>
@@ -117,7 +129,7 @@
                             android:fontFamily="@font/montserrat_medium"
                             android:text="Pet Name"
                             android:textAlignment="viewStart"
-                            android:textSize="10.5sp" />
+                            android:textSize="11sp" />
 
                         <TextView
                             android:id="@+id/B_PetName_EditText"
@@ -145,7 +157,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/montserrat_medium"
                             android:text="Species"
-                            android:textSize="10.5sp" />
+                            android:textSize="11sp" />
 
                         <TextView
                             android:id="@+id/B_Species_EditText"
@@ -184,7 +196,7 @@
                             android:fontFamily="@font/montserrat_medium"
                             android:text="Boarding"
                             android:textAlignment="viewStart"
-                            android:textSize="10.5sp" />
+                            android:textSize="11sp" />
 
                         <TextView
                             android:id="@+id/B_Boarding_EditText"
@@ -212,7 +224,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/montserrat_medium"
                             android:text="Amount"
-                            android:textSize="10.5sp" />
+                            android:textSize="11sp" />
 
                         <TextView
                             android:id="@+id/B_Amount_EditText"
@@ -227,17 +239,6 @@
                     </LinearLayout>
 
                 </LinearLayout>
-
-                <TextView
-                    android:id="@+id/B_BookedDate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginRight="35dp"
-                    android:fontFamily="@font/montserrat_medium"
-                    android:text="Date (mm/dd/yyyy)"
-                    android:textSize="10.5sp" />
 
                 <LinearLayout
                     android:id="@+id/Line5_Layout"
@@ -261,7 +262,7 @@
                             android:fontFamily="@font/montserrat_medium"
                             android:text="Check-in"
                             android:textAlignment="viewStart"
-                            android:textSize="10.5sp" />
+                            android:textSize="11sp" />
 
                         <TextView
                             android:id="@+id/B_CheckIn_EditText"
@@ -289,7 +290,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/montserrat_medium"
                             android:text="Time"
-                            android:textSize="10.5sp" />
+                            android:textSize="11sp" />
 
                         <TextView
                             android:id="@+id/B_CheckIn_Time_EditText"
@@ -327,7 +328,7 @@
                             android:fontFamily="@font/montserrat_medium"
                             android:text="Check-out"
                             android:textAlignment="viewStart"
-                            android:textSize="10.5sp" />
+                            android:textSize="11sp" />
 
                         <TextView
                             android:id="@+id/B_CheckOut_EditText"
@@ -355,7 +356,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/montserrat_medium"
                             android:text="Time"
-                            android:textSize="10.5sp" />
+                            android:textSize="11sp" />
 
                         <TextView
                             android:id="@+id/B_CheckOut_Time_EditText"
@@ -389,7 +390,7 @@
                         android:fontFamily="@font/montserrat_medium"
                         android:text="Special Instruction"
                         android:textAlignment="viewStart"
-                        android:textSize="10.5sp" />
+                        android:textSize="11sp" />
 
                     <TextView
                         android:id="@+id/B_SInstruction_EditText"
@@ -422,7 +423,7 @@
                         android:fontFamily="@font/montserrat_medium"
                         android:text="Additional Charges"
                         android:textAlignment="viewStart"
-                        android:textSize="10.5sp" />
+                        android:textSize="11sp" />
 
                     <TextView
                         android:id="@+id/B_AdditionalCharges_EditText"
@@ -453,7 +454,7 @@
                         android:fontFamily="@font/montserrat_medium"
                         android:text="Total Amount"
                         android:textAlignment="viewStart"
-                        android:textSize="10.5sp" />
+                        android:textSize="11sp" />
 
                     <TextView
                         android:id="@+id/B_TotalAmount_EditText"
@@ -475,11 +476,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="35dp"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginEnd="35dp"
                 android:fontFamily="@font/montserrat_medium"
-                android:text="*There may be changes upon Check-in."
-                android:textAlignment="viewStart"
+                android:text="@string/boardingConfirmNote"
+
+                android:textAlignment="center"
                 android:textSize="10sp" />
 
             <androidx.constraintlayout.widget.ConstraintLayout

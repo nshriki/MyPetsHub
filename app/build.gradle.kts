@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.ir.backend.js.compile
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -67,4 +69,6 @@ dependencies {
     implementation(libs.codesgood.justifiedtextview)
     implementation(libs.library)
     implementation(libs.picasso)
+    implementation(libs.glide.v440)
+    annotationProcessor(libs.compiler.v440)
 }
